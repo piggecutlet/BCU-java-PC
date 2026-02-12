@@ -1,5 +1,5 @@
 # Compiling BCU
-###### Last Updated: Feb 2nd, 2025
+###### Last Updated: Feb 13th, 2026
 ###### NOTE: If you just want to install BCU, stop reading and go to the README!!
 ###### ANOTHER NOTE: This is still a work in progress, but should be sufficient for experienced contributors.
 
@@ -46,8 +46,12 @@
 2. In `Project`, set the SDK to `1.8` and the Language Level to `8`
 3. Go to `Modules`, and just delete all current Source Folders, Resource Folders, and Excluded Folders.
 4. Through the folder tree, set `src/main/java` as the Source Folder, `src/main/resources` as the Resource Folder, and `target` as an Excluded Folder.
+
+    ![modules](images/modules.png)
 5. Close the Project Settings window, and open `Settings`, either with <kbd>Ctrl ,</kbd> or through the little gear icon on the top right.
 6. Find the "Java Compiler" tab with the search function, then change `Javac` to `Eclipse` if it's not already `Eclipse`
+
+    ![compiler](images/compiler.png)
 7. Close the Settings window.
 
 ## Run BCU!
@@ -57,6 +61,23 @@
 ## Troubleshooting!
 - Error: `java: cannot find symbol`
   - Make sure the Java Compiler is set to Eclipse!
+- Error: `null in main`
+  - The properties file path is incorrect.
+  Check that the resource folder is correctly set in Step 4 of `Set Up Settings`
+  Also, make sure that `BCU-java-PC.iml` is as below.
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <module version="4">
+      <component name="AdditionalModuleElements">
+        <content url="file://$MODULE_DIR$" dumb="true">
+          <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+          <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+        </content>
+      </component>
+    </module>
+    ```
+    If configured correctly, the compiled properties files should be in the `BCU-java-PC/target/classes` folder.
 
 ## Set Up Compiling BCU into a Jar
 ###### To be written
