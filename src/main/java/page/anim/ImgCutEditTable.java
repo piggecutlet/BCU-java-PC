@@ -8,6 +8,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.EventObject;
 
+/**
+ * 選択中アニメーションの画像分割矩形と名称を直接編集する表。
+ * 値の確定時にUndo履歴を作成し、矩形変更をアニメーションへ通知する。
+ */
 class ImgCutEditTable extends AbJTable {
 
 	private static final long serialVersionUID = 1L;

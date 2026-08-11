@@ -24,6 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * 戦闘シミュレーション、リプレイ再生、録画出力を実行し、戦場表示と集計表を同期する画面。
+ * 戦場表示を発生源とする押下、ドラッグ、解放、クリック、ホイールだけを {@link BattleBox} へ委譲し、速度変更やシーク時は表示状態もリセットする。
+ */
 public class BattleInfoPage extends KeyHandler implements OuterBox {
 
 	private static final long serialVersionUID = 1L;
@@ -77,10 +81,10 @@ public class BattleInfoPage extends KeyHandler implements OuterBox {
 	private boolean musicChanged = false, exPopupShown = false;
 
 	/**
-	 * Creates a new Battle Page
-	 * @param p The previous page
-	 * @param rec Will be null if this battle is not began from a replay
-	 * @param conf If the value is 0, lineup will be randomized, if it's 1, lineup won't be changed
+	 * リプレイを入力として戦闘画面を生成する。
+	 * @param p 遷移元の画面
+	 * @param rec 再生または出力するリプレイ。{@code null}不可
+	 * @param conf ビット0は出力モード、ビット1は大型表示、ビット2は画像出力
 	 */
 	public BattleInfoPage(Page p, Replay rec, int conf) {
 		super(p);
@@ -277,6 +281,10 @@ public class BattleInfoPage extends KeyHandler implements OuterBox {
 		utd.setRowHeight(size(x, y, 50));
 	}
 
+	/**
+	 * 戦闘状態を進め、入力反映と集計表更新を終えてから描画し、その後に表示文言・背景・音楽を同期する。
+	 * 高速時の追加更新は入力反映後に行い、低速時は対象外フレームの処理全体を省略する。
+	 */
 	@Override
 	public synchronized void onTimer(int t) {
 		super.onTimer(t);
@@ -466,6 +474,7 @@ public class BattleInfoPage extends KeyHandler implements OuterBox {
 			backClicked = true;
 			BCMusic.stopAll();
 			if (bb instanceof BBRecd) {
+				// 録画中は保存選択に応じて完了処理または中断処理を先に行う
 				BBRecd bbr = (BBRecd) bb;
 				if (Opts.conf("Do you want to save this video?")) {
 					bbr.end();

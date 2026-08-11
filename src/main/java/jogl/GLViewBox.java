@@ -23,6 +23,10 @@ import java.util.Queue;
 
 import static page.anim.IconBox.IBConf.*;
 
+/**
+ * アイコン編集用の前後処理と切抜き範囲をJOGLアニメーション表示へ重ねる。
+ * 切抜き結果はGLバッファ読戻しではなく、画面座標をAWT Robotで取得して画像化する。
+ */
 class GLIconBox extends GLViewBox implements IconBox {
 
 	private static final long serialVersionUID = 1L;
@@ -102,6 +106,9 @@ class GLIconBox extends GLViewBox implements IconBox {
 
 }
 
+/**
+ * GLViewBoxの画面取得と録画キューを、ViewBox共通の書出し契約へ接続する。
+ */
 class GLVBExporter implements ViewBox.VBExporter {
 
 	private final GLViewBox vb;
@@ -146,6 +153,11 @@ class GLVBExporter implements ViewBox.VBExporter {
 
 }
 
+/**
+ * アニメーションをJOGLで表示するViewBox実装。
+ * 通常プレビューはAWTスクリーンキャプチャだが、透明背景の静止画だけは
+ * Java2Dの{@link FG2D}へ同じアニメーションを再描画してアルファを保持する。
+ */
 class GLViewBox extends GLCstd implements ViewBox, GLEventListener {
 
 	private static final long serialVersionUID = 1L;

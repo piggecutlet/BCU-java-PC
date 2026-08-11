@@ -12,6 +12,10 @@ import javax.swing.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
+/**
+ * 選択中の {@link StageLimit} に対する全体値・レア度別値・禁止コンボ・禁止本能玉を直接編集するページ。
+ * リスト選択はモデルを変更せず禁止切替ボタンだけを更新し、切替操作で禁止集合へ反映する。
+ */
 public class StageLimitTable extends Page {
 
     private static final long serialVersionUID = 1L;
@@ -221,7 +225,7 @@ public class StageLimitTable extends Page {
         bano.setEnabled(b && jlorb.getSelectedIndex() != -1);
     }
 
-    private void reg(JTF jtf) { // using "reg" for "register" because "set" is already used for ui
+    private void reg(JTF jtf) { // UI 配置用の set と区別するため register を短縮
         add(jtf);
 
         jtf.addFocusListener(new FocusAdapter() {

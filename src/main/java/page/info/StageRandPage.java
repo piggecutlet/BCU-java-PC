@@ -9,6 +9,9 @@ import page.battle.BattleSetupPage;
 
 import javax.swing.*;
 
+/**
+ * 選択したマップ集合のレベル番号からランダムステージを生成し、戦闘設定へ渡すページ。
+ */
 public class StageRandPage extends Page {
 
 	private static final long serialVersionUID = 1L;

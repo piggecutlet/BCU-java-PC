@@ -20,8 +20,15 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.util.Arrays;
 
+/**
+ * モデル部品の階層、描画属性、スプライト割り当てを編集する画面。
+ * 表、階層ツリー、スプライト選択、プレビュー上の操作を同期する。
+ */
 public class MaModelEditPage extends Page implements AbEditPage {
 
+    /**
+     * プレビュー上のドラッグ操作が変更する対象。
+     */
     public enum DragType {
         CAMERA, PART, ROTATE,
     }
@@ -76,6 +83,9 @@ public class MaModelEditPage extends Page implements AbEditPage {
         return back;
     }
 
+    /**
+     * 表やスプライト面からの変更を選択状態とモデルプレビューへ反映する。
+     */
     @Override
     public void callBack(Object obj) {
         change(obj, o -> {
@@ -120,6 +130,9 @@ public class MaModelEditPage extends Page implements AbEditPage {
     }
 
 
+    /**
+     * 他の編集画面から渡された対象をツリーとモデル編集表へ反映する。
+     */
     @Override
     public void setSelection(AnimCE anim) {
         change(anim, ac -> {
@@ -128,7 +141,7 @@ public class MaModelEditPage extends Page implements AbEditPage {
         });
     }
 
-    private P realScale(int[] part, boolean ignoreFirst) { // this is kinda finicky, but it works enough
+    private P realScale(int[] part, boolean ignoreFirst) { // 扱いに注意が必要だが、現在の用途には足りる
         P scale = ignoreFirst ? new P(1.0f, 1.0f) : new P(part[8] / 1000.0f, part[9] / 1000.0f);
         if (part[0] != -1)
             scale.times(realScale(mmet.mm.parts[part[0]], false));
@@ -158,7 +171,7 @@ public class MaModelEditPage extends Page implements AbEditPage {
             Point p1 = mb.getPoint(p = e.getPoint());
             int modifiers = e.getModifiers();
             int modifier = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
-            boolean isCtrlDown = (modifiers & modifier) != 0; // note: do NOT use for right mouse check
+            boolean isCtrlDown = (modifiers & modifier) != 0; // 右クリック判定には使用しない
             int[] part;
 
             if (SwingUtilities.isRightMouseButton(e)) {
@@ -166,7 +179,7 @@ public class MaModelEditPage extends Page implements AbEditPage {
                     part = parts[i];
                     int x = getRootPane().getWidth();
                     int y = getRootPane().getHeight() - MenuBarHandler.getBar().getHeight();
-                    Point p2 = mb.getPoint(new Point(size(x, y, 400), size(x, y, 250))); // pivot placeholder
+                    Point p2 = mb.getPoint(new Point(size(x, y, 400), size(x, y, 250))); // 仮の回転軸
                     double sA = Math.atan2(p0.y - p2.y, p0.x - p2.x);
                     double sB = Math.atan2(p1.y - p2.y, p1.x - p2.x);
                     part[10] += (int) ((sB - sA) * 1800 / Math.PI);

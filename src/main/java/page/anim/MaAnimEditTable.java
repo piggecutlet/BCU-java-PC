@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
 
+/**
+ * アニメーションの部位トラックを編集し、追加・並べ替え後の選択範囲を画面へ通知する表。
+ * すべてのデータ変更をUndo履歴へ登録する。
+ */
 public class MaAnimEditTable extends AnimTable<Part> {
 
 	private static final long serialVersionUID = 1L;

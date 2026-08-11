@@ -8,6 +8,11 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.WritableRaster;
 
+/**
+ * BufferedImageを共通FakeImage APIへ公開するCPU画像実装。
+ * 部分画像は元画像と画素領域を共有し、{@link #cloneImage()}だけが画素を複製する。
+ * {@link #getGraphics()}は新しいGraphicsをFG2Dで包むが、現APIから内部Graphicsを解放する手段はない。
+ */
 public class FIBI implements FakeImage {
 
 	public static final ImageBuilder<BufferedImage> builder = new PCIB();

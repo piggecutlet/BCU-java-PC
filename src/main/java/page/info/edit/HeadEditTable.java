@@ -23,6 +23,10 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.util.Arrays;
 
+/**
+ * 選択中ステージの名称・倍率・背景・音楽・城・基本ルールを直接編集するページ。
+ * 外部選択ページから戻る際は、直前にフォーカスされた主系・切替系フィールドへ選択値を反映する。
+ */
 class HeadEditTable extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -144,7 +148,7 @@ class HeadEditTable extends Page {
 		set(jres, x, y, w * 7, 50, w, 50);
 
 		set(bg, x, y, 0, 100, w, 50);
-		set(jbg, x, y, w, 100, w, 50); // line 2
+		set(jbg, x, y, w, 100, w, 50);
 		set(jbgh, x, y, w * 2, 100, w, 50);
 		set(jbg1, x, y, w * 3, 100, w, 50);
 		set(cas, x, y, w * 4, 100, w, 50);

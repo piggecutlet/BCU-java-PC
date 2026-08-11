@@ -27,6 +27,10 @@ import java.util.Vector;
 import java.util.stream.Collectors;
 
 @SuppressWarnings({"ResultOfMethodCallIgnored", "ForLoopReplaceableByForEach"})
+/**
+ * ユーザーパックの背景画像と表示属性を編集し、画像ファイルをワークスペースへ保存する画面。
+ * 一覧の再構築中は選択イベントを抑止し、現在の背景と編集欄の同期を保つ。
+ */
 public class BGEditPage extends Page {
 
 	private static final long serialVersionUID = 1L;

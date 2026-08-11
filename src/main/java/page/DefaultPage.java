@@ -2,6 +2,10 @@ package page;
 
 import javax.swing.*;
 
+/**
+ * 戻る操作だけを備えた最小の画面実装。
+ * 戻る操作では前画面を再生成せず、保持している {@link #front} へ遷移する。
+ */
 public class DefaultPage extends Page {
 
 	private static final long serialVersionUID = 1L;

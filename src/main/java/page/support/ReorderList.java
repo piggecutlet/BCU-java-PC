@@ -7,6 +7,11 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
 
+/**
+ * {@link DefaultListModel} を保持し、DnDによる並べ替えと任意の複製追加を提供する一覧。
+ * 並べ替えではリスナーがある場合に {@link ReorderListener#reordering()} をモデル変更直前、補正済み移動先を渡す {@link ReorderListener#reordered(int, int)} を直後に呼ぶ。
+ * 複製追加では {@link ReorderListener#add(Object)} が {@code true} を返した後にモデルへ追加する。
+ */
 public class ReorderList<T> extends JList<T> implements Reorderable {
 
 	private static final long serialVersionUID = 1L;

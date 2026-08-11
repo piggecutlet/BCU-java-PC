@@ -14,6 +14,10 @@ import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.EventObject;
 
+/**
+ * モデル部品の階層・描画属性を編集し、並べ替えに伴う参照番号も更新する表。
+ * 変更後はUndo履歴を作成し、編集画面へ選択範囲の再同期を要求する。
+ */
 class MaModelEditTable extends AnimTable<int[]> {
 
 	private static final long serialVersionUID = 1L;

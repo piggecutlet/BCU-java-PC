@@ -12,6 +12,12 @@ import java.awt.image.WritableRaster;
 import java.io.*;
 import java.util.function.Supplier;
 
+/**
+ * 同じ画像源をAWTのBufferedImageまたはJOGLのTextureDataへ必要時に展開する遅延画像。
+ * 画素編集を要求された後はAWT側を正とし、GL表現を破棄して次回描画時に再生成する。
+ * 部分画像は親の表現を共有するため、親が先に解決可能な状態であることが前提。
+ * Supplierの入力ストリームはAWT経路の正常読込後だけ閉じ、読込例外時とGL経路では明示的に閉じない。
+ */
 public class AmbImage implements FakeImage {
 
 	private Supplier<InputStream> stream;
@@ -110,7 +116,7 @@ public class AmbImage implements FakeImage {
 		if (str == Marker.RECOLOR)
 			checkBI();
 		if (str == Marker.RECOLORED) {
-			// TODO if graphics is faster?
+			// TODO Graphics経由の方が高速か
 			ByteArrayOutputStream abos = new ByteArrayOutputStream();
 			try {
 				ImageIO.write(bimg(), "PNG", abos);

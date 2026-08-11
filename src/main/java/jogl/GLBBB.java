@@ -9,6 +9,10 @@ import page.battle.BattleBox;
 import page.battle.BattleBox.OuterBox;
 import page.view.ViewBox;
 
+/**
+ * 戦闘画面、リプレイ録画、アイコン編集、アニメーション表示の各抽象UIを
+ * JOGL実装で生成するバックエンドファクトリ。
+ */
 public class GLBBB extends BBBuilder {
 
 	@Override

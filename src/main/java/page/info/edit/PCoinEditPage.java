@@ -12,6 +12,10 @@ import utilpc.UtilPC;
 import javax.swing.*;
 import java.util.Vector;
 
+/**
+ * カスタム味方の本能項目リストを追加・削除し、選択項目を詳細編集表へ同期するページ。
+ * リスト更新中は選択イベントを抑止し、本能配列と最大レベル配列を同じ順序・要素数に保つ。
+ */
 public class PCoinEditPage extends Page {
 
     private static final long serialVersionUID = 1L;

@@ -7,7 +7,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * 種別ごとの拡張子フィルターと前回ディレクトリを適用して、取込元ファイルを選択するダイアログ。
+ * コンストラクター内で選択処理を完了し、結果を {@link #file} として保持する。
+ */
 public class Importer extends JFileChooser {
+	/**
+	 * 取込可能なファイル種別と、共有する履歴ディレクトリの区分。
+	 */
 	public enum FileType {
 		PNG("PNG Images", 1, "png"),
 		MUS("OGG Music", 2, "ogg");

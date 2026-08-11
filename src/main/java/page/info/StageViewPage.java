@@ -17,6 +17,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * マップ階層をたどってステージを選択し、検索・複製・戦闘開始へ接続する閲覧ページ。
+ * 上位リストの選択変更は下位候補を再構築し、最終選択は詳細表示中のステージも更新する。
+ */
 public class StageViewPage extends StagePage {
 
 	private static final long serialVersionUID = 1L;

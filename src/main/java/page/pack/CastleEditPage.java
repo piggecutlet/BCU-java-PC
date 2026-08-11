@@ -22,6 +22,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * ユーザーパックの城画像とボス出現位置を編集する画面。
+ * 画像の追加・差し替え・削除をパック内データとワークスペース上の画像ファイルへ反映する。
+ */
 public class CastleEditPage extends Page {
 
 	private static final long serialVersionUID = 1L;

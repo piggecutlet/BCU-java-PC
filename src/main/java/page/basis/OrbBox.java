@@ -8,6 +8,10 @@ import utilpc.awt.FG2D;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * 本能玉の特性、効果、等級を合成してオフスクリーン描画する Canvas。
+ * 本能玉配列は所有せず参照だけを保持し、空配列は表示なしを表す。
+ */
 public class OrbBox extends Canvas {
 	private static final long serialVersionUID = 1L;
 

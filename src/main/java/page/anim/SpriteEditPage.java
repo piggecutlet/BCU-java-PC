@@ -8,6 +8,9 @@ import utilpc.Algorithm;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * 元画像に色相・彩度・明度の補正を適用し、編集結果を返す画面。
+ */
 public class SpriteEditPage extends Page {
 
 	private static final long serialVersionUID = 1L;

@@ -8,6 +8,10 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DragSource;
 import java.io.IOException;
 
+/**
+ * {@link Reorderable} をモデルに持つ表で、単一行を同一表内移動するDnDハンドラー。
+ * ドロップ行は移動前の挿入位置としてモデルへ渡し、完了後に移動先の行を再選択する。
+ */
 public class InTableTH extends TransferHandler implements Transferable {
 
 	private static final long serialVersionUID = 1L;

@@ -7,6 +7,10 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
+/**
+ * アニメーション編集データを、モデル・アニメーション・パーツの種別ごとに識別して運ぶ転送オブジェクト。
+ * 種別番号は {@link #DFS} の添字と一致している必要がある。
+ */
 public class AnimTransfer<T> implements Transferable {
 
 	public static final DataFlavor ADF = new DataFlavor(Part.class, "MaAnim");

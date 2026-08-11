@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * 音楽を選択して試聴し、使用ステージを参照する画面。
+ * 試聴で確保したClipを残さないよう、戻る操作と画面離脱の双方で音声サービスを停止・解放する。
+ */
 public class MusicPage extends Page implements SupPage<Music> {
 
 	private static final long serialVersionUID = 1L;

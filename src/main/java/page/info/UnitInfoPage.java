@@ -12,6 +12,9 @@ import page.view.UnitViewPage;
 
 import javax.swing.*;
 
+/**
+ * ユニットの全形態を同一レベル条件で表示し、宝変更や特殊情報表示を全形態へ同期するページ。
+ */
 public class UnitInfoPage extends Page {
 
 	private static final long serialVersionUID = 1L;

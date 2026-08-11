@@ -10,6 +10,9 @@ import utilpc.UtilPC;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * ユニットまたはフォームを編集用画像付きで表示し、アニメーション欠損時は破損状態を示す一覧レンダラー。
+ */
 public class UnitLCR extends DefaultListCellRenderer {
 
 	private static final long serialVersionUID = 1L;

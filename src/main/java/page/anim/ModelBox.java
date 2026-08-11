@@ -15,6 +15,9 @@ import utilpc.awt.FG2D;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * モデル編集用プレビューの描画方式を抽象化する。
+ */
 interface ModelBox {
 	static ModelBox getInstance() {
 		if(MainBCU.USE_JOGL)
@@ -38,6 +41,9 @@ interface ModelBox {
 	Point getPoint(Point p);
 }
 
+/**
+ * Java2Dのオフスクリーン画像を介してモデルを描画するプレビュー。
+ */
 class BufferedModel extends Canvas implements ModelBox {
 
 	private static final long serialVersionUID = 1L;
@@ -124,6 +130,9 @@ class BufferedModel extends Canvas implements ModelBox {
 	}
 }
 
+/**
+ * OpenGLでモデルを描画するプレビュー。
+ */
 class GLModelBox extends GLCstd implements ModelBox {
 	private static final long serialVersionUID = 1L;
 

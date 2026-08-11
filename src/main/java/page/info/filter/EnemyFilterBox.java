@@ -19,6 +19,10 @@ import java.util.*;
 
 import static utilpc.Interpret.*;
 
+/**
+ * 通常敵候補を分類・属性・能力・攻撃型・パック範囲で抽出し、名前条件を重ねて親ページへ返す基底ページ。
+ * 各条件群の OR/AND トグルは群内の結合方法を切り替え、未選択の群は制約しない。
+ */
 public abstract class EnemyFilterBox extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -119,8 +123,7 @@ public abstract class EnemyFilterBox extends Page {
 	}
 
 	/**
-	 0 - update both type and name to filter
-	 1 - only update name filter
+	 * {@code type == 0} では型条件から候補を再構築し、{@code type == 1} では保持中の候補へ名前条件だけを適用する。
 	 */
 	protected void confirm(int type) {
 		getFront().callBack(type == 0 ? filterType()
@@ -130,6 +133,9 @@ public abstract class EnemyFilterBox extends Page {
 
 }
 
+/**
+ * 条件をトグルボタン群で指定する通常敵フィルター。
+ */
 class EFBButton extends EnemyFilterBox {
 
 	private static final long serialVersionUID = 1L;
@@ -292,6 +298,9 @@ class EFBButton extends EnemyFilterBox {
 
 }
 
+/**
+ * 条件を複数選択リストで指定する通常敵フィルター。
+ */
 class EFBList extends EnemyFilterBox {
 
 	private static final long serialVersionUID = 1L;

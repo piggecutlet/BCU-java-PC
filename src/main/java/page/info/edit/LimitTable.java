@@ -13,6 +13,10 @@ import javax.swing.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
+/**
+ * 選択中の {@link Limit} に対するレア度・出撃数・グループ・レベル制限などを直接編集するページ。
+ * グループとレベル制限の選択ページから戻る際は、同じ制限オブジェクトへ選択値を書き戻す。
+ */
 public class LimitTable extends Page {
 
 	private static final long serialVersionUID = 1L;

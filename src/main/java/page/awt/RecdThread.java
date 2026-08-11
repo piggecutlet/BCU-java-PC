@@ -16,6 +16,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Queue;
 
+/**
+ * 共有フレームキューを消費し、PNG、MP4、GIF のいずれかへ逐次出力するワーカースレッド。
+ * 通常終了はキューを空にして出力を確定し、中止はMP4ファイルとPNG出力フォルダーを削除する一方、GIFは確定して残す。
+ * 完了コールバックは通常終了時だけ、このワーカースレッド上で呼ばれる。
+ */
 public abstract class RecdThread extends Thread {
 
 	private static class GIFThread extends RecdThread {

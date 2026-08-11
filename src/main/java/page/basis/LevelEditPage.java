@@ -28,6 +28,10 @@ import java.util.List;
 
 import static common.util.Data.ORB_TOT;
 
+/**
+ * 編成中ユニットのレベルと本能玉を編集する画面。
+ * 入力のたびに現在の {@link LineUp} へ値を書き戻し、能力条件を満たさない本能玉は互換値へ補正して親画面へ通知する。
+ */
 public class LevelEditPage extends Page {
 
 	private static final long serialVersionUID = 1L;

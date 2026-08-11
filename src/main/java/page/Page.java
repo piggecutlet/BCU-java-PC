@@ -14,6 +14,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
+/**
+ * 画面遷移、周期更新、サイズ変更を共通化する画面基底。
+ * {@link MainFrame} が遷移時に {@link #leave()} または {@link #exit()} を呼び、表示後に {@link #renew()} を呼ぶ。
+ * {@link #timer(int)} は呼出元スレッド上で、登録した子ページを含む寸法更新とテーブル再描画を行い、このページの {@link #onTimer(int)} だけを呼ぶ。
+ * 通常の全体更新はEDTから呼ばれるが、このクラス自体はEDT実行を強制しない。
+ */
 public abstract class Page extends JPanel implements RetFunc {
 
 	private static final long serialVersionUID = 1L;
@@ -177,8 +183,8 @@ public abstract class Page extends JPanel implements RetFunc {
 	}
 
 	/**
-	 * When UI components must be resized
-	 * This "must" not be used for updating UI
+	 * UI 部品の寸法変更が必要な場合だけ実行する。
+	 * 通常の UI 状態更新には使用しない。
 	 */
 	private void resized() {
 		PP dimension = getXY();
@@ -267,7 +273,7 @@ public abstract class Page extends JPanel implements RetFunc {
 	public synchronized final void timer(int t) {
 		resized();
 
-		//Revalidate components
+		// UI 部品を再検証
 		updateTableFromPage(this);
 
 		for(int i = 0; i < subPages.size(); i++) {

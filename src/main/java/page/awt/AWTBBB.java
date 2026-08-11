@@ -7,6 +7,10 @@ import page.battle.BattleBox;
 import page.battle.BattleBox.OuterBox;
 import page.view.ViewBox;
 
+/**
+ * Java2D/AWT 実装の描画部品を生成する共有ファクトリ。
+ * 自身は状態を持たず、生成した各 Canvas が描画状態とリソースを所有する。
+ */
 public class AWTBBB extends BBBuilder {
 
 	public static final AWTBBB INS = new AWTBBB();

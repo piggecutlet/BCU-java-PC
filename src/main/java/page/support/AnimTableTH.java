@@ -7,6 +7,10 @@ import java.awt.dnd.DragSource;
 
 import static page.support.AnimTransfer.DFS;
 
+/**
+ * {@link AnimTable} の選択行を型別フレーバーで転送するDnDハンドラー。
+ * ドロップ時は同一表内の並べ替え、通常のインポート時は選択行直後への挿入として表へ委譲する。
+ */
 public class AnimTableTH<T> extends TransferHandler {
 
 	private static final long serialVersionUID = 1L;

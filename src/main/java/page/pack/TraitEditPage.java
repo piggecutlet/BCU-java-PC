@@ -25,6 +25,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ユーザーパック固有の属性、対象フォーム、表示アイコンを編集する画面。
+ * アイコン追加ではPNGを保存し、削除ではファイル削除の成功後にメモリ上の参照を消去する。
+ */
 public class TraitEditPage extends Page {
 
     private static final long serialVersionUID = 1L;

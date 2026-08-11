@@ -14,6 +14,10 @@ import javax.swing.*;
 import java.util.Collection;
 import java.util.Vector;
 
+/**
+ * 城セットと城画像を二段階で選択し、画像・ボス出現位置・使用ステージを確認する画面。
+ * 選択用途では現在の城画像を識別子として呼び出し側へ返す。
+ */
 public class CastleViewPage extends Page {
 
 	private static final long serialVersionUID = 1L;

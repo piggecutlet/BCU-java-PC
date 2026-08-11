@@ -9,6 +9,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.Locale;
 
+/**
+ * 色モデルの各表現を同期編集し、確定値を前画面へ返す画面。
+ * 編集中は共有する {@link ColorPicker} の配列を直接更新し、コールバック時に前画面へ同じインスタンスを渡す。
+ */
 public class ColorPickPage extends Page {
 
     public final ColorPicker picker = new ColorPicker(this);

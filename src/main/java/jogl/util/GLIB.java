@@ -11,6 +11,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.function.Supplier;
 
+/**
+ * OpenGL利用時の画像生成入口。
+ * 通常はCPU画像とGL画像を遅延選択する{@link AmbImage}を返すが、
+ * アイコン処理モードでは画素アクセス可能なAWT実装へ固定する。
+ * 書出しは常にAWT側ビルダーへ委譲する。
+ */
 public class GLIB extends ImageBuilder<BufferedImage> {
 
 	@Override

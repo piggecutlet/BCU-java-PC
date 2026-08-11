@@ -14,6 +14,10 @@ import page.support.SortTable;
 
 import java.awt.*;
 
+/**
+ * 通常敵一覧を現在の宝補正を含む能力値でソートし、名前セルから倍率付き詳細へ遷移する表モデル。
+ * ソートは受け取った候補リスト自体の順序を変更する。
+ */
 public class EnemyListTable extends SortTable<Enemy> {
 
 	private static final long serialVersionUID = 1L;

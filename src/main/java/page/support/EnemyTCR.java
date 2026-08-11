@@ -8,6 +8,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
+/**
+ * 敵を名称と敵アイコンで表示する表セルレンダラー。
+ */
 public class EnemyTCR extends DefaultTableCellRenderer {
 
 	private static final long serialVersionUID = 1L;

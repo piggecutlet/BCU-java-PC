@@ -17,6 +17,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 名前・数値条件・敵編成を組み合わせて全ステージを検索し、結果を階層別に閲覧するページ。
+ * 敵条件はトグルに応じて全件一致またはいずれか一致として評価する。
+ */
 @SuppressWarnings("ForLoopReplaceableByForEach")
 public class StageSearchPage extends StagePage {
     private static final String[] ops = {"=", ">", "<"};
@@ -331,6 +335,9 @@ public class StageSearchPage extends StagePage {
         addListeners();
     }
 
+    /**
+     * 入力済みの条件を順に適用し、結果用のマップ・ステージマップ・ステージ各リストを同時に再構築する。
+     */
     private void startSearch() {
         resultFound = false;
         List<MapColc> maps = new ArrayList<>();

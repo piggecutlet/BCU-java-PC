@@ -24,6 +24,10 @@ import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ステージの敵出現行を表示し、敵セルから同一ステージ内の倍率を保った詳細表示へ遷移する表モデル。
+ * 表示行は元データと逆順で構築される。
+ */
 public class StageTable extends AbJTable {
 
 	private static final long serialVersionUID = 1L;

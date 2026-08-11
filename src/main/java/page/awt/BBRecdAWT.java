@@ -7,6 +7,10 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+/**
+ * 戦闘描画フレームをキューへ複製し、専用の {@link RecdThread} に出力させる記録用 Canvas。
+ * {@link #end()} は残フレームを書き切って保存し、{@link #quit()} は出力を破棄する終了要求となる。
+ */
 class BBRecdAWT extends BattleBoxDef implements BBRecd {
 
 	private static final long serialVersionUID = 1L;

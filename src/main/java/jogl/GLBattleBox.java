@@ -11,6 +11,11 @@ import jogl.util.GLGraphics;
 import page.battle.BBCtrl;
 import page.battle.BattleBox;
 
+/**
+ * 戦闘シミュレーションの描画要求をJOGL Canvas上の{@link GLGraphics}へ接続する。
+ * 各display呼出しで描画アダプタを作成・破棄し、画面終了時の{@link #releaseData()}では
+ * 描画資源ではなく戦闘シミュレーション側の保持データを解放する。
+ */
 public class GLBattleBox extends GLCstd implements BattleBox, GLEventListener {
 
 	private static final long serialVersionUID = 1L;

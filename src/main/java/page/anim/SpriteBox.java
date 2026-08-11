@@ -11,6 +11,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * スプライト画像上の分割矩形を選択・移動・拡縮し、表の選択と同期する編集面。
+ * ドラッグ中はデータを直接更新し、操作完了時に一度だけUndo履歴を作成する。
+ */
 class SpriteBox extends JPanel implements KeyListener, MouseInputListener, MouseWheelListener {
 
 	private static final long serialVersionUID = 1L;

@@ -31,6 +31,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * ユーザーパックのランダム敵定義、候補敵、倍率、共有値、アイコンを編集する画面。
+ * 定義選択と明細表を同期し、アイコン変更をワークスペース上の画像へ即時保存する。
+ */
 public class EREditPage extends Page {
 
 	private static final long serialVersionUID = 1L;

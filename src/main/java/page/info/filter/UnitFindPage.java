@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+/**
+ * ユニット条件と名前検索の結果をソート可能な形態一覧として表示し、呼び出し元へ選択を公開するページ。
+ */
 public class UnitFindPage extends Page implements SupPage<Unit> {
 
 	private static final long serialVersionUID = 1L;
@@ -113,6 +116,9 @@ public class UnitFindPage extends Page implements SupPage<Unit> {
 		addListeners();
 	}
 
+	/**
+	 * 名前条件だけを再評価し、型条件で保持済みの候補集合は作り直さない。
+	 */
 	public void setSearch(String t) {
 		if (ufb != null) {
 			ufb.name = t;

@@ -3,6 +3,10 @@ package main;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 読込・書込診断を時刻と発生位置付きで標準出力へ記録する。
+ * {@link #p(String, int, String)} は開発実行時だけ出力し、エラー系は実行形態にかかわらず出力する。
+ */
 public strictfp class Printer {
 
 	public static void e(String source, int line, String description) {

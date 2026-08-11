@@ -10,6 +10,10 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * アプリケーション共通のメニューバーを一度構築し、保存と現在画面の戻る操作へ接続する。
+ * 項目の有効状態は画面遷移と終了処理から共有インスタンスに対して更新される。
+ */
 public class MenuBarHandler {
     private static final JMenuBar bar = new JMenuBar();
 

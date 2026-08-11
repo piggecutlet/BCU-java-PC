@@ -36,6 +36,10 @@ import java.util.EventObject;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * ステージの敵出現行を直接編集・並べ替えし、敵セルから詳細表示または敵選択へ遷移する表モデル。
+ * 表示行は {@link SCDef#datas} と逆順のため、編集・追加・削除・並べ替えでは行番号を反転して同期する。
+ */
 public class StageEditTable extends AbJTable implements Reorderable {
 
 	private static final long serialVersionUID = 1L;
@@ -349,7 +353,7 @@ public class StageEditTable extends AbJTable implements Reorderable {
 	}
 
 	private String getBossStr(int v) {
-		return v == 1 ? "Boss" : v == 2 ? "Boss (Shake)" : " "; // the space is so it can be clicked for no boss effect
+		return v == 1 ? "Boss" : v == 2 ? "Boss (Shake)" : " "; // ボス効果なしのセルもクリック可能にするため空白を返す
 	}
 
 	private Object get(int r, int c) {

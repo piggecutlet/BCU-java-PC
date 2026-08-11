@@ -35,6 +35,10 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Queue;
 
+/**
+ * バックアップ一覧と仮想ファイルツリーを閲覧し、全体または一部の復元を選択する画面。
+ * 復元指定は設定へ保存して終了処理に委ねる一方、削除とエクスポートは選択操作時に即時実行する。
+ */
 public class BackupPage extends Page {
 
     private static final long serialVersionUID = 1L;

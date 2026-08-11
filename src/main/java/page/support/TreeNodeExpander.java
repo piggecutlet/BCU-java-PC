@@ -6,6 +6,10 @@ import javax.swing.tree.AbstractLayoutCache;
 import javax.swing.tree.TreeCellRenderer;
 import java.awt.*;
 
+/**
+ * アニメーション木の各行を、UI導入時に取得した親コンポーネントの右端まで広げるTree UI。
+ * 編集中の行はエディター寸法を優先し、通常行はレンダラーの高さと利用可能な横幅を組み合わせる。
+ */
 public class TreeNodeExpander extends BasicTreeUI {
     private int lastWidth;
     private boolean leftToRight;
@@ -34,6 +38,9 @@ public class TreeNodeExpander extends BasicTreeUI {
         return new AnimTreeRenderer();
     }
 
+    /**
+     * 木の向きと現在幅を考慮して行領域を算出する寸法ハンドラー。
+     */
     public class NodeDimensionHandler extends AbstractLayoutCache.NodeDimensions {
 
         @Override

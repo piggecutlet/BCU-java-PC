@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+/**
+ * 通常敵とランダム敵を共通一覧で検索し、戻る操作で選択値を親ページへ通知するページ。
+ */
 public class AbEnemyFindPage extends Page implements SupPage<AbEnemy> {
 
     private static final long serialVersionUID = 1L;
@@ -122,6 +125,9 @@ public class AbEnemyFindPage extends Page implements SupPage<AbEnemy> {
         addListeners();
     }
 
+    /**
+     * 名前条件だけを再評価し、属性・能力条件で保持済みの候補集合を対象にする。
+     */
     public void setSearch(String t) {
         if (efb != null) {
             efb.name = t;

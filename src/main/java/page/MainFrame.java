@@ -14,6 +14,11 @@ import java.util.ConcurrentModificationException;
 import java.util.Enumeration;
 import java.util.List;
 
+/**
+ * 単一の現在画面を所有し、画面遷移、入力配送、サイズ変更、終了確認を統括するトップレベルウィンドウ。
+ * 遷移時は前後関係に応じて旧画面の {@link Page#leave()} または {@link Page#exit()} を呼び分ける。
+ * グローバル入力リスナーは現在画面へだけイベントを転送する。
+ */
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -85,7 +90,7 @@ public class MainFrame extends JFrame {
 		sizer();
 	}
 
-	// Currently unused function used to officially add an icon to BCU, it currently works but will be left unused until an icon is oficially added to BCU assets
+	// BCU 用の正式なアイコン素材が追加されるまで未使用。処理自体は動作する。
 	/*private void setIcon() {
 		try {
 			Image icons = ImageIO.read(new File("IconDirectoryHere.png"));

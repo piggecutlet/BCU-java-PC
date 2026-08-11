@@ -15,6 +15,9 @@ import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.HashMap;
 
+/**
+ * ワークスペースのアニメーショングループとツリー表示を相互に同期する。
+ */
 public class AnimGroupTree implements TreeExpansionListener {
     private final JTree animTree;
     private final HashMap<String, Boolean> groupExpanded = new HashMap<>();
@@ -254,7 +257,7 @@ public class AnimGroupTree implements TreeExpansionListener {
             }
         }
 
-        //no base anim node
+        // 基底グループ直下にアニメーションがない場合
 
         enumeration = nodes.children();
 

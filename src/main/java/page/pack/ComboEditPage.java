@@ -25,6 +25,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * ユーザーパックのにゃんコンボと構成フォームを編集する画面。
+ * パック、ユニット、フォーム、表セルの選択を同期し、別画面で選んだグループを復帰時に反映する。
+ */
 public class ComboEditPage extends Page {
 
     private static final long serialVersionUID = 1L;
@@ -225,7 +229,7 @@ public class ComboEditPage extends Page {
 //            }
 //        });
 
-        jlc.addMouseListener(new MouseAdapter() { // FIXME selection listener doesn't react to column change; this is the workaround
+        jlc.addMouseListener(new MouseAdapter() { // FIXME 選択リスナーは列変更に反応しないため、マウス解放で同期する
             @Override
             public void mouseReleased(MouseEvent e) {
                 super.mouseReleased(e);
@@ -394,6 +398,11 @@ public class ComboEditPage extends Page {
         addf.setEnabled(check);
     }
 
+    /**
+     * グループ選択要求を受けた場合は選択画面へ遷移し、通常のコールバックでは編集状態だけを再評価する。
+     *
+     * @param newParam {@link CharaGroupPage} または呼び出し元が渡す通常のコールバック値
+     */
     @Override
     public void callBack(Object newParam) {
         super.callBack(newParam);

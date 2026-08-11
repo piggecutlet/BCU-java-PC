@@ -5,6 +5,9 @@ import common.util.pack.Background;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * 背景要素の一覧表示を拡張するためのレンダラー。
+ */
 public class BackgroundLCR extends DefaultListCellRenderer {
 
     private static final long serialVersionUID = 1L;
@@ -21,7 +24,7 @@ public class BackgroundLCR extends DefaultListCellRenderer {
 
         JLabel jl = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
-        //@TODO Set text here
+        // TODO ここで表示名を設定する
 
         return jl;
     }

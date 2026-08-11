@@ -20,6 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * PC版の確認、警告、入力ダイアログを集約し、呼び出し側へユーザー判断を返す。
+ * 致命的エラーの重複表示抑止や、終了を伴う保存要求も扱うため、
+ * 単なるメッセージ整形ではなくアプリケーション制御境界として機能する。
+ */
 public class Opts {
 
 	public static final int MEMORY = 1001, SECTY = 1002, REQITN = 1003, INSTALL = 1004;
@@ -179,7 +184,7 @@ public class Opts {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.add(jl);
-		//panel.add(check); // TODO - Optional Backup generation
+		//panel.add(check); // TODO - 任意バックアップ生成
 
 		int choice = JOptionPane.showConfirmDialog(null, panel, Page.get(MainLocale.PAGE, "savconf"), JOptionPane.YES_NO_CANCEL_OPTION);
 
@@ -408,7 +413,7 @@ public class Opts {
 			contents.setBorder(new CompoundBorder(eb, b));
 		}
 
-		//Gather EX stages
+		// 選択候補となるEXステージを収集
 		List<Stage> exStages = new ArrayList<>();
 
 		if (s.info instanceof DefStageInfo) {

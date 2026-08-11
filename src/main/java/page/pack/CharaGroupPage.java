@@ -14,6 +14,10 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * 利用可能なパックからキャラグループと所属ユニットを参照・選択する画面。
+ * 選択結果は {@link #cg} として保持し、呼び出し元が画面復帰後に取得する。
+ */
 public class CharaGroupPage extends Page {
 
 	private static final long serialVersionUID = 1L;

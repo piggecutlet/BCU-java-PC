@@ -12,6 +12,9 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * アニメーショングループ木で、グループ状態とアニメーションの編集用画像を表示するレンダラー。
+ */
 public class AnimTreeRenderer extends DefaultTreeCellRenderer {
 
     private static final long serialVersionUID = 1L;

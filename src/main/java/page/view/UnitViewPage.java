@@ -21,6 +21,10 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+/**
+ * パック横断または指定パック内のユニット形態を選び、アニメーション表示と情報画面遷移を行う。
+ * アニメーション複製時はパックの編集可否・公開設定・パスワードを確認してから作業領域へ展開する。
+ */
 public class UnitViewPage extends AbViewPage {
 
 	private static final long serialVersionUID = 2010L;

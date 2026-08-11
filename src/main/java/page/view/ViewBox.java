@@ -11,6 +11,11 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.Queue;
 
+/**
+ * アニメーション表示画面とAWT・OpenGL描画実装の境界。
+ * 位置・倍率操作、描画更新、プレビュー取得、録画開始・終了を共通化し、
+ * 呼び出し側が描画バックエンドを意識せず扱えるようにする。
+ */
 public interface ViewBox {
 
 	class Conf {
@@ -19,6 +24,9 @@ public interface ViewBox {
 
 	}
 
+	/**
+	 * 描画原点と倍率を保持し、AWTマウスイベントをバックエンド共通の表示操作へ変換する。
+	 */
 	class Controller {
 
 		public final P ori = new P(0, 0);
@@ -56,6 +64,9 @@ public interface ViewBox {
 		}
 	}
 
+	/**
+	 * 画面キャプチャを消費するエンコードスレッドと、完了後に再有効化するUI部品を結び付ける。
+	 */
 	class Loader implements RetFunc {
 
 		public final RecdThread thr;
@@ -88,6 +99,9 @@ public interface ViewBox {
 
 	}
 
+	/**
+	 * バックエンド固有の画面取得と録画処理をViewBoxへ公開する。
+	 */
 	interface VBExporter {
 
 		void end(JTG btn);

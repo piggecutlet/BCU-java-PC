@@ -25,6 +25,10 @@ import java.awt.event.MouseEvent;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * 1形態の能力値をレベル・本能・現在の宝補正から再計算し、攻撃や能力の詳細を表示するページ。
+ * レベル入力の確定時は表示倍率と本能表示を同じ {@link Level} に同期する。
+ */
 public class UnitInfoTable extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -439,7 +443,7 @@ public class UnitInfoTable extends Page {
 				while (fm.stringWidth(wrapped) < 400)
 					wrapped = str.substring(0, i++);
 
-				int maximum; //JP proc texts don't count with space, this is here to prevent it from staying in while loop forever
+				int maximum; // 日本語の効果文には空白がないため、折り返し処理の無限ループを防ぐ
 				if (CommonStatic.getConfig().lang == CommonStatic.Lang.Locale.JP)
 					maximum = Math.max(wrapped.lastIndexOf("。"), wrapped.lastIndexOf("、"));
 				else

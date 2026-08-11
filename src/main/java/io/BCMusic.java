@@ -12,6 +12,12 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * BGM、効果音、UI音の生成・再利用・音量管理を行うPC音声サービス。
+ * 一部の標準効果音はバイト列と{@link BCPlayer}を再利用し、登録済みプールがある場合だけ停止時に戻す。
+ * {@link #clear()}と{@link #stopAll()}が解放するのは待機中のプール、専用配列、BGM、終了音で、
+ * 再生中または追跡していないカスタム効果音のClip解放までは保証しない。
+ */
 public class BCMusic extends Data {
 	private static final byte INVALID = 0, CANNON_CHARGE = 1, TOUCH = 2;
 	private static final short TOT = 191;
@@ -274,7 +280,7 @@ public class BCMusic extends Data {
 				Clip c = openFile(m);
 				if (c.getMicrosecondLength() < 10_000_000L)
 					CACHE_CUSTOM.put(mus, m.data.getBytes());
-				loadSound(-1, c); // TODO stop audio if battle is exited after
+				loadSound(-1, c); // TODO 戦闘終了後に音声を停止
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -402,7 +408,7 @@ public class BCMusic extends Data {
 	}
 
 	private static void loadSound(int ind, Music file, boolean b, long loop) throws Exception {
-		// set ind to -1 to tell it's BG
+		// BGMとして生成する場合、BCPlayerへ渡す識別子は-1
 		if (b) {
 			Clip c = openFile(file);
 			c.loop(Clip.LOOP_CONTINUOUSLY);

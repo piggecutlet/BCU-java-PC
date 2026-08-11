@@ -25,6 +25,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * 選択中ステージの出現グループ、召喚先、EX遷移確率、道場スコア条件を編集するページ。
+ * 各リストの選択変更は対応する入力欄だけを切り替え、外部ステージ選択から戻る際にEX候補へ追記する。
+ */
 public class AdvStEditPage extends Page {
 
 	private static final long serialVersionUID = 1L;

@@ -7,6 +7,10 @@ import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
+/**
+ * 表自身をモデルとして扱い、列の表示順と論理列番号の対応を {@code lnk} で管理する基底表。
+ * サブクラスは受け取った表示列番号を必要に応じて {@code lnk} 経由で論理列へ変換する。
+ */
 public abstract class AbJTable extends JTable implements TableModel {
 
 	private static final long serialVersionUID = 1L;
@@ -70,6 +74,9 @@ public abstract class AbJTable extends JTable implements TableModel {
 
 }
 
+/**
+ * Swingの列移動と {@link AbJTable#lnk} の入れ替えを同じ操作として実行する列モデル。
+ */
 class TModel extends DefaultTableColumnModel {
 
 	private static final long serialVersionUID = 1L;
@@ -86,7 +93,7 @@ class TModel extends DefaultTableColumnModel {
 	}
 
 	@Override
-	public void moveColumn(int c, int nc) { // todo: sometimes this crashes
+	public void moveColumn(int c, int nc) { // TODO ときどきクラッシュする
 		c = Math.max(c, 0);
 		c = Math.min(c, getColumnCount() - 1);
 		nc = Math.max(nc, 0);

@@ -8,6 +8,10 @@ import page.view.EnemyViewPage;
 
 import javax.swing.*;
 
+/**
+ * 敵の倍率付き詳細を表示し、前後の敵・出現ステージ・アニメーションへ移動するページ。
+ * 宝変更と特殊情報トグルは内包する詳細表へ即時反映する。
+ */
 public class EnemyInfoPage extends Page {
 
 	private static final long serialVersionUID = 1L;

@@ -7,6 +7,10 @@ import utilpc.awt.FG2D;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * 編成が参照するにゃんこ城構成をオフスクリーン描画する Canvas。
+ * 渡された配列を複製せず保持するため、呼び出し元での要素変更が次回描画へ反映される。
+ */
 class NyCasBox extends Canvas {
 
 	private static final long serialVersionUID = 1L;

@@ -12,6 +12,9 @@ import javax.swing.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
+/**
+ * 新規リプレイの名前を検証し、既存データとの上書き確認後に保存する画面。
+ */
 public class RecdSavePage extends Page {
 
 	private static final long serialVersionUID = 1L;

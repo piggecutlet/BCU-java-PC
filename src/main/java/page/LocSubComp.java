@@ -8,6 +8,10 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * ローカライズ対象部品と文言バインダーを関連付け、再解決と編集操作を管理する。
+ * 右クリック編集は共有ローカライズデータを変更し、所属画面から前方の画面まで再更新する。
+ */
 public class LocSubComp {
 
 	static class LocBinder implements Binder {

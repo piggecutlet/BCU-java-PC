@@ -22,6 +22,10 @@ import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 
+/**
+ * アニメーション種別、部位トラック、キーフレームを編集・再生確認する画面。
+ * 各一覧の選択とプレビュー時刻を維持したまま編集結果を同期する。
+ */
 public class MaAnimEditPage extends Page implements AbEditPage {
 
 	private static final long serialVersionUID = 1L;
@@ -91,6 +95,9 @@ public class MaAnimEditPage extends Page implements AbEditPage {
 		return back;
 	}
 
+	/**
+	 * 表やスプライト面からの変更を各一覧へ反映し、プレビューの再生成後も時刻を維持する。
+	 */
 	@Override
 	public void callBack(Object o) {
 		if (o instanceof SpriteBox && maet.anim != null)
@@ -146,6 +153,9 @@ public class MaAnimEditPage extends Page implements AbEditPage {
 		}
 	}
 
+	/**
+	 * 他の編集画面から渡された対象をツリーとアニメーション編集表へ反映する。
+	 */
 	@Override
 	public void setSelection(AnimCE a) {
 		change(a, ac -> {
@@ -300,6 +310,9 @@ public class MaAnimEditPage extends Page implements AbEditPage {
 		mpet.setRowHeight(size(x, y, 50));
 	}
 
+	/**
+	 * 再生状態を進めて情報表示を更新した後、スプライト面とアニメーションを描画する。
+	 */
 	@Override
 	public synchronized void onTimer(int t) {
 		super.onTimer(t);

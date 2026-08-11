@@ -38,6 +38,10 @@ import java.awt.event.FocusEvent;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+/**
+ * アニメーションのスプライト画像と画像分割データを編集する画面。
+ * ツリー、分割表、画像上の選択を相互に同期する。
+ */
 public class ImgCutEditPage extends Page implements AbEditPage {
 
 	private static final long serialVersionUID = 1L;
@@ -120,6 +124,9 @@ public class ImgCutEditPage extends Page implements AbEditPage {
 		return back;
 	}
 
+	/**
+	 * 画像上の選択を表へ反映し、選択対象の詳細表示も更新する。
+	 */
 	@Override
 	public void callBack(Object o) {
 		changing = true;
@@ -135,6 +142,9 @@ public class ImgCutEditPage extends Page implements AbEditPage {
 		changing = false;
 	}
 
+	/**
+	 * 他の編集画面から渡された対象をツリーと編集データの双方へ反映する。
+	 */
 	@Override
 	public void setSelection(AnimCE ac) {
 		changing = true;
@@ -521,7 +531,7 @@ public class ImgCutEditPage extends Page implements AbEditPage {
 
 			ArrayList<AnimCE> anims = new ArrayList<>();
 
-			//validation
+			// 入力値の検証
 			for (TreePath path : paths) {
 				if (!(path.getLastPathComponent() instanceof DefaultMutableTreeNode))
 					return;

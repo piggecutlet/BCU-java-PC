@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
 
+/**
+ * 選択中の部位トラックに属するキーフレーム列を編集する表。
+ * フレーム列の変更を検証してUndo履歴へ登録し、選択範囲を画面へ通知する。
+ */
 class PartEditTable extends AnimTable<int[]> {
 
 	private static final long serialVersionUID = 1L;

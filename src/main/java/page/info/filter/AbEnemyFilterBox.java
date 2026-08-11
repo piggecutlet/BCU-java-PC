@@ -20,6 +20,10 @@ import java.util.*;
 
 import static utilpc.Interpret.*;
 
+/**
+ * 通常敵とランダム敵を共通候補として抽出し、通常敵には分類・属性・能力・攻撃型条件を適用する基底ページ。
+ * パック指定時は対象パック・標準パック・依存先だけを候補に含める。
+ */
 public abstract class AbEnemyFilterBox extends Page {
 
     private static final long serialVersionUID = 1L;
@@ -128,8 +132,7 @@ public abstract class AbEnemyFilterBox extends Page {
     }
 
     /**
-     0 - filter both type and name
-     1 - only filter by name
+     * {@code type == 0} では型条件から候補を再構築し、{@code type == 1} では保持中の候補へ名前条件だけを適用する。
      */
     protected void confirm(int type) {
         getFront().callBack(type == 0 ? filterType()
@@ -139,6 +142,9 @@ public abstract class AbEnemyFilterBox extends Page {
 
 }
 
+/**
+ * 条件をトグルボタン群で指定する通常敵・ランダム敵フィルター。
+ */
 class AEFBButton extends AbEnemyFilterBox {
 
     private static final long serialVersionUID = 1L;
@@ -296,6 +302,9 @@ class AEFBButton extends AbEnemyFilterBox {
 
 }
 
+/**
+ * 条件を複数選択リストで指定する通常敵・ランダム敵フィルター。
+ */
 class AEFBList extends AbEnemyFilterBox {
 
     private static final long serialVersionUID = 1L;

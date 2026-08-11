@@ -10,6 +10,10 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DragSource;
 import java.io.IOException;
 
+/**
+ * {@link ReorderList} の単一選択を、同一一覧内では移動、対応フレーバーの非ドロップ取込では複製するハンドラー。
+ * 移動先は挿入位置であり、下方向の移動では元要素の削除後に選択位置を1つ戻す。
+ */
 public class InListTH<T> extends TransferHandler implements Transferable {
 
 	private static final long serialVersionUID = 1L;

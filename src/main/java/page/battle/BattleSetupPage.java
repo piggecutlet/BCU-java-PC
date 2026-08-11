@@ -22,6 +22,10 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 
+/**
+ * ステージ難度、編成、出撃制限、戦闘アイテムを確定して戦闘画面を生成する。
+ * プリセット適用時は現在の編成と基礎設定を書き換える。
+ */
 public class BattleSetupPage extends LubCont {
 
 	private static final long serialVersionUID = 1L;

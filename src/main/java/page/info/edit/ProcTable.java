@@ -11,8 +11,14 @@ import page.support.ListJtfPolicy;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * 効果データをメタデータ駆動の Swing エディター群へ割り当て、可視項目だけを配置する基底ページ。
+ */
 public abstract class ProcTable extends Page {
 
+	/**
+	 * 選択中の攻撃に属する効果を2列で編集する表。
+	 */
 	static class AtkProcTable extends ProcTable {
 
 		private static final long serialVersionUID = 1L;
@@ -20,7 +26,7 @@ public abstract class ProcTable extends Page {
 
 		private static final int SEC = 16;
 
-		//Procs for units
+		// 味方用の効果
 		private static final int[] UINDS = new int[] {
 				Data.P_KB, Data.P_STOP, Data.P_SLOW, Data.P_CRIT, Data.P_WAVE, Data.P_MINIWAVE, Data.P_WEAK,
 				Data.P_BREAK, Data.P_SHIELDBREAK, Data.P_WARP, Data.P_CURSE, Data.P_SATK, Data.P_POIATK, Data.P_VOLC,
@@ -29,7 +35,7 @@ public abstract class ProcTable extends Page {
 				Data.P_POISON, Data.P_ARMOR, Data.P_SPEED, Data.P_DELAY, Data.P_LETHARGY
 		};
 
-		//Procs for enemies
+		// 敵用の効果
 		private static final int[] EINDS = new int[] {
 				Data.P_KB, Data.P_STOP, Data.P_SLOW, Data.P_CRIT, Data.P_WAVE, Data.P_MINIWAVE, Data.P_WEAK,
 				Data.P_BREAK, Data.P_SHIELDBREAK, Data.P_WARP, Data.P_CURSE, Data.P_SATK, Data.P_POIATK, Data.P_VOLC,
@@ -73,6 +79,9 @@ public abstract class ProcTable extends Page {
 
 	}
 
+	/**
+	 * エンティティ全体に属する効果を編集する表。
+	 */
 	static class MainProcTable extends ProcTable {
 
 		private static final long serialVersionUID = 1L;
@@ -82,14 +91,14 @@ public abstract class ProcTable extends Page {
 				Data.P_IMUSEAL, Data.P_IMUMOVING, Data.P_IMUARMOR, Data.P_IMUPOI, Data.P_IMUPOIATK, Data.P_IMUVOLC,
 				Data.P_IMUSPEED, Data.P_IMUSUMMON, Data.P_BARRIER, Data.P_DEMONSHIELD, Data.P_DEATHSURGE, Data.P_BSTHUNT,
 				Data.P_SPIRIT, Data.P_IMUBLAST, Data.P_IMUDELAY, Data.P_IMULETH
-		}; //Procs for units
+		}; // 味方用の効果
 		private static final int[] EINDS = { Data.P_STRONG, Data.P_SPEEDUP, Data.P_LETHAL, Data.P_BURROW, Data.P_REVIVE, Data.P_HPREGEN, Data.P_CRITI,
 				Data.P_COUNTER, Data.P_IMUATK, Data.P_DMGCUT, Data.P_DMGCAP, Data.P_IMUKB, Data.P_IMUSTOP,
 				Data.P_IMUSLOW, Data.P_IMUWAVE, Data.P_IMUWEAK, Data.P_IMUWARP, Data.P_IMUCURSE,
 				Data.P_IMUSEAL, Data.P_IMUMOVING, Data.P_IMUARMOR, Data.P_IMUPOI, Data.P_IMUPOIATK, Data.P_IMUVOLC,
 				Data.P_IMUSPEED, Data.P_IMUSUMMON, Data.P_BARRIER, Data.P_DEMONSHIELD, Data.P_DEATHSURGE,
 				Data.P_IMUCANNON, Data.P_IMUBLAST, Data.P_IMUDELAY, Data.P_IMULETH
-		}; //Procs for enemies
+		}; // 敵用の効果
 
 		protected MainProcTable(Page p, boolean edit, boolean unit) {
 			super(p, unit ? INDS : EINDS, edit, unit);

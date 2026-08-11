@@ -17,6 +17,10 @@ import page.view.MusicPage;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/**
+ * ステージ本体と適用制限を要約し、星倍率や関連素材のセルを各詳細ページへ接続する表モデル。
+ * 星倍率セルのクリックは所有ページへのコールバックとして通知する。
+ */
 public class HeadTable extends AbJTable {
 
 	private static final long serialVersionUID = 1L;

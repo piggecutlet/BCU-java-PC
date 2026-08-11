@@ -25,6 +25,10 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.util.*;
 
+/**
+ * 敵と味方を同じ比較枠へ配置し、倍率・レベル・対象属性を反映した実効値を並列表示するページ。
+ * 選択ページから戻る際は選択元の対象を差し替え、属性変更時と同様に全列を再計算する。
+ */
 public class ComparePage extends Page {
 
     private static final long serialVersionUID = 1L;

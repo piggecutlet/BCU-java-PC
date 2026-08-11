@@ -13,6 +13,9 @@ import java.io.File;
 import java.util.Comparator;
 import java.util.Vector;
 
+/**
+ * ワークスペースのリプレイ一覧を選択し、名称変更と削除を管理する画面。
+ */
 public class RecdManagePage extends AbRecdPage {
 
 	private static final long serialVersionUID = 1L;

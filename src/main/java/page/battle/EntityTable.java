@@ -16,6 +16,9 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+/**
+ * 戦場のユニットまたは敵について、現在値と累積戦績を切り替えて並べ替え表示する表。
+ */
 class EntityTable extends SortTable<Entity> {
 
 	private static final long serialVersionUID = 1L;

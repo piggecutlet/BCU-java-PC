@@ -24,6 +24,9 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+/**
+ * アニメーションのプレビュー、グループ整理、表示用・戦闘用アイコン編集を扱う画面。
+ */
 public class DIYViewPage extends AbViewPage implements AbEditPage {
 
 	private static final long serialVersionUID = 1L;
@@ -74,6 +77,9 @@ public class DIYViewPage extends AbViewPage implements AbEditPage {
 		return super.getBackButton();
 	}
 
+	/**
+	 * 他の編集画面から渡された対象をツリー上でも選択し、表示対象を一致させる。
+	 */
 	@Override
 	public void setSelection(AnimCE ac) {
 

@@ -8,6 +8,10 @@ import page.Page;
 
 import javax.swing.*;
 
+/**
+ * 各アニメーション編集画面の切り替え、保存、Undoを一元管理するヘッダー。
+ * 画面切り替え時は同じ選択対象を次の編集画面へ渡す。
+ */
 public class EditHead extends Page implements EditLink {
 
 	private static final long serialVersionUID = 1L;
@@ -52,6 +56,9 @@ public class EditHead extends Page implements EditLink {
 		return null;
 	}
 
+	/**
+	 * 履歴状態を反映した後、現在の編集画面に表示内容の再同期を要求する。
+	 */
 	@Override
 	public void review() {
 		undo.setEnabled(anim != null && anim.history.size() > 1);
@@ -60,6 +67,9 @@ public class EditHead extends Page implements EditLink {
 			undo.setToolTipText(anim.getUndo());
 	}
 
+	/**
+	 * Undo対象を切り替え、変更通知のリンクをこのヘッダーへ付け替える。
+	 */
 	public void setAnim(AnimCE da) {
 		if (changing)
 			return;

@@ -17,6 +17,10 @@ import page.info.UnitInfoPage;
 import page.info.filter.UnitEditBox;
 import utilpc.Interpret;
 
+/**
+ * カスタム味方形態について、共通エンティティ値にレベル・価格・再生産・説明・本能を加えて編集するページ。
+ * 表示値は現在の宝とレベル倍率を含むため、確定時にモデルの基礎値へ逆算して保存する。
+ */
 public class FormEditPage extends EntityEditPage {
 
 	private static final long serialVersionUID = 1L;

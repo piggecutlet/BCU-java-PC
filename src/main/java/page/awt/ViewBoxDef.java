@@ -13,6 +13,11 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+/**
+ * アニメーションモデルをオフスクリーン描画し、直前フレームと書き出し用フレーム列を管理する Java2D 表示部品。
+ * {@link #start(boolean)} で出力スレッドを開始し、{@link #end(JTG)} で以後のフレーム収集を止めて完了待ちへ移る。
+ * モデル更新と描画画像生成は同じインスタンスのロックで直列化する。
+ */
 class ViewBoxDef extends Canvas implements ViewBox, ViewBox.VBExporter {
 
 	private static final long serialVersionUID = 1L;

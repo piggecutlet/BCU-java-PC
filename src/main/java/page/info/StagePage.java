@@ -13,6 +13,9 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
+/**
+ * 選択中のステージについて、基本情報・出現敵・戦闘開始導線を一体で表示する基底ページ。
+ */
 public class StagePage extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -66,6 +69,9 @@ public class StagePage extends Page {
 		info.setRowHeight(size(x, y, 50));
 	}
 
+	/**
+	 * 選択ステージと星倍率を両方の表へ反映し、関連操作の有効状態も同じ選択に同期する。
+	 */
 	protected synchronized void setData(Stage st, int starId) {
 		stage = st;
 		boolean exists = st != null;

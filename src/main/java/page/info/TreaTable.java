@@ -19,6 +19,10 @@ import java.util.List;
 
 import static utilpc.Interpret.*;
 
+/**
+ * 現在の編成基準に属する宝・砲台強化値を編集し、変更を親ページの再計算へ通知するページ。
+ * 砲台カテゴリの展開は排他的で、フォーカス喪失時に値を確定する。
+ */
 public class TreaTable extends Page {
 
 	private static final long serialVersionUID = 1L;

@@ -13,6 +13,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.function.Supplier;
 
+/**
+ * AWT画像の読込・生成・書出しを担うImageBuilder。
+ * 読み込んだ画像はOpenGL側とも整合する乗算済みARGB形式へ正規化し、
+ * Supplierから取得した入力ストリームはImageIO.readの正常終了後に閉じる。
+ * 読込例外時の解放は保証しない。
+ */
 public class PCIB extends ImageBuilder<BufferedImage> {
 
 	@Override

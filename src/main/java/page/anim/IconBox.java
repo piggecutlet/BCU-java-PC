@@ -13,8 +13,14 @@ import java.awt.image.BufferedImage;
 
 import static page.anim.IconBox.IBConf.*;
 
+/**
+ * アニメーション用アイコンの切り抜き表示と編集操作を定義する。
+ */
 public interface IconBox extends ViewBox {
 
+	/**
+	 * アイコン種別と切り抜き矩形を共有する編集設定。
+	 */
 	class IBConf {
 
 		public static final int[] line = new int[4];
@@ -22,6 +28,9 @@ public interface IconBox extends ViewBox {
 
 	}
 
+	/**
+	 * 切り抜き矩形の移動・拡縮とアイコン効果の重ね描画を処理する。
+	 */
 	class IBCtrl extends ViewBox.Controller {
 
 		public int w = 1;
@@ -95,7 +104,7 @@ public interface IconBox extends ViewBox {
 
 				int t = mode == 0 ? (type == 1 || type == 2) ? type : 0 : 4;
 
-				// black outline
+				// 黒い輪郭
 				FakeImage bimg = aux.ico[mode][t].getImg();
 				int bw = bimg.getWidth();
 				int bh = bimg.getHeight();
@@ -104,7 +113,7 @@ public interface IconBox extends ViewBox {
 				gra.setColor(FakeGraphics.BLACK);
 				gra.drawRect(line[0] - 1, line[1] - 1, line[2] + 1, line[3] + 1);
 
-				// glow effect
+				// 発光効果
 				if (glow == 1) {
 					gra.setComposite(FakeGraphics.BLEND, 255, 3);
 					bimg = aux.ico[0][6].getImg();

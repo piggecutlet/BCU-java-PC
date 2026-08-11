@@ -19,6 +19,10 @@ import javax.swing.*;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
+/**
+ * ユーザーパックの魂アニメーション、名称、音声、描画レイヤーを編集する画面。
+ * パックと魂の選択を各編集欄へ同期し、更新中のコンボボックス通知による再代入を抑止する。
+ */
 public class SoulEditPage extends Page {
 
     private static final long serialVersionUID = 1L;

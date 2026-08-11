@@ -12,6 +12,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
 
+/**
+ * 標準属性とユーザーパック属性を同じモデルで扱い、属性名とアイコンを表示する選択リスト。
+ */
 public class TraitList extends JList<Trait> {
 
     private static final long serialVersionUID = 1L;

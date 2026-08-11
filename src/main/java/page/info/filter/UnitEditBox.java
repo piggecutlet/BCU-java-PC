@@ -13,6 +13,10 @@ import static common.util.Data.TRAIT_EVA;
 import static common.util.Data.TRAIT_RED;
 import static utilpc.Interpret.SABIS;
 
+/**
+ * カスタム味方の属性と能力ビットを編集し、選択確定ごとに対象モデルと親編集ページを同期するページ。
+ * {@link #setData(int, ArrayList)} 中は選択イベントによるモデル書き戻しを抑止する。
+ */
 public class UnitEditBox extends Page {
 
 	private static final long serialVersionUID = 1L;

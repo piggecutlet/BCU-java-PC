@@ -14,23 +14,28 @@ import utilpc.PP;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/**
+ * 戦闘画面のクリックとドラッグをシミュレーション用の操作キューへ変換する。
+ * ドラッグ内クリック判定の設定が有効な場合だけ、移動量が5未満のドラッグを解放時にクリックとして扱う。
+ * 1段表示、複数編成、自城生存中に、高さの20%以上の移動、同値以下の横ずれ、高さの20%を30フレームで移動する以上の速度を満たす上下ドラッグで一度だけ編成切替を送る。
+ */
 public class BBCtrl extends BBPainter {
 
 	private final SBCtrl sbc;
 
-	//This section is for lineup changing, detecting dragging up
+	// ここから編成切替用の上方向ドラッグ検出
 	/**
-	 * Initial point where drag started and ended
+	 * ドラッグの開始点と現在の終点。
 	 */
 	private Point dragInit, dragEnd;
 
 	/**
-	 * The mouse button used when dragging (e.g. left click)
+	 * ドラッグに使用したマウスボタン。
 	 */
 	private int dragButton;
 
 	/**
-	 * Boolean which tells dragging up/down is performed or not
+	 * 現在のドラッグ中に上下切替を実行済みか。
 	 */
 	protected boolean performed = false;
 
@@ -134,15 +139,15 @@ public class BBCtrl extends BBPainter {
 			return;
 
 		final double MINIMUM_DISTANCE = box.getHeight() * 0.2;
-		final double MINIMUM_VELOCITY = MINIMUM_DISTANCE / 30; //px/f cursor must be dragged in 1 sec
+		final double MINIMUM_VELOCITY = MINIMUM_DISTANCE / 30; // 1秒以内のドラッグに必要なピクセル毎フレーム速度
 
 		if(isInDragRange(MINIMUM_DISTANCE)) {
 			double dy = dragEnd.y - dragInit.y;
 			double velocity = dy / dragFrame;
 
 			if(Math.abs(velocity) >= MINIMUM_VELOCITY && Math.abs(dy) >= MINIMUM_DISTANCE) {
-				//Notice program dragging up/down is already performed
-				//Won't process dragging up/down until drag is reset (mouse released)
+				// 上下ドラッグを実行済みとして記録
+				// マウスを離してドラッグ状態が解除されるまで再処理しない
 				performed = true;
 
 				if(velocity < 0)
@@ -156,7 +161,7 @@ public class BBCtrl extends BBPainter {
 	private boolean isInDragRange(double minD) {
 		double dx = dragEnd.x - dragInit.x;
 
-		//Drag up down, dx shouldn't exceed minimum off path
+		// 上下ドラッグでは横方向のずれを許容範囲内に制限
 		return minD >= Math.abs(dx);
 	}
 }

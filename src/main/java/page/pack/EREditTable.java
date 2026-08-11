@@ -25,6 +25,10 @@ import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
 
+/**
+ * ランダム敵定義の候補敵と倍率・共有値を編集する表。
+ * 行DnDの移動先は挿入位置として受け取り、下方向の移動では削除後のずれを補正する。
+ */
 class EREditTable extends AbJTable implements Reorderable {
 
 	private static final long serialVersionUID = 1L;

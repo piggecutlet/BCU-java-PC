@@ -3,6 +3,10 @@ package jogl;
 import common.battle.BattleField;
 import page.battle.BBRecd;
 
+/**
+ * JOGL戦闘画面を描画しながらリプレイ画像列を録画する。
+ * 同一シミュレーション時刻での重複フレームを避け、時刻が進んだ描画だけをキューへ追加する。
+ */
 class GLBBRecd extends GLBattleBox implements BBRecd {
 
 	private static final long serialVersionUID = 1L;

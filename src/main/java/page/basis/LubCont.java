@@ -6,6 +6,10 @@ import page.info.UnitInfoPage;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+/**
+ * {@link LineUpBox} へのグローバル入力配送と周期再描画を共通化する画面基底。
+ * 数字キーとマウス操作は編成モデルを変更し得るため、入力欄を持つ派生画面は必要に応じて配送を抑止する。
+ */
 public abstract class LubCont extends Page {
 
 	private static final long serialVersionUID = 1L;

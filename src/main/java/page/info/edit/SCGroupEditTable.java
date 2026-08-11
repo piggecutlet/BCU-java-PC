@@ -16,6 +16,10 @@ import java.awt.event.KeyEvent;
 import java.util.EventObject;
 import java.util.Map.Entry;
 
+/**
+ * 召喚対象敵と出現グループ番号の対応表を {@link SCDef#smap} へ直接追加・編集・削除する表モデル。
+ * 表示行は {@link SCDef#getSMap()} の順序をそのまま編集対象のキーへ対応付ける。
+ */
 class SCGroupEditTable extends AbJTable {
 
 	private static final long serialVersionUID = 1L;

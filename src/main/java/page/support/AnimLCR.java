@@ -11,6 +11,9 @@ import utilpc.UtilPC;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * アニメーションを持つ要素や敵を、編集用アイコン付きで表示する一覧レンダラー。
+ */
 public class AnimLCR extends DefaultListCellRenderer {
 
 	private static final long serialVersionUID = 1L;

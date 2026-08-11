@@ -27,6 +27,10 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.Vector;
 
+/**
+ * ユーザーパックのステージマップ・ステージ・出現行・制限を同一画面で編集するページ。
+ * 編集側とクリップボード側の選択は排他的で、選択変更時に全サブ表の編集対象と操作可否を同期する。
+ */
 public class StageEditPage extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -518,6 +522,9 @@ public class StageEditPage extends Page {
 		setData(st);
 	}
 
+	/**
+	 * 現在の編集対象ステージを切り替え、ヘッダー・制限・出現行の各モデルを同じ対象へ同期する。
+	 */
 	private void setData(Stage st) {
 		stage = st;
 		hinf.setData(st);

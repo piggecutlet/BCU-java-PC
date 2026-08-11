@@ -15,6 +15,10 @@ import utilpc.Interpret;
 
 import javax.swing.*;
 
+/**
+ * カスタム敵について、共通エンティティ値にドロップ・星区分・説明・属性能力を加えて編集するページ。
+ * 表示ドロップ値は現在の宝倍率を含むため、確定時にモデルの基礎値へ逆算して保存する。
+ */
 public class EnemyEditPage extends EntityEditPage {
 
 	private static final long serialVersionUID = 1L;
@@ -112,7 +116,7 @@ public class EnemyEditPage extends EntityEditPage {
 			}
 		}
 		String finalDesc = String.join("<br>", eneDesc);
-		if (finalDesc.length() > 12) //12 is the total length of "<br><br><br>", which is no description
+		if (finalDesc.length() > 12) // 12 は説明なしを表す "<br><br><br>" の文字数
 			ene.description.put(finalDesc);
 		else
 			ene.description.put("");

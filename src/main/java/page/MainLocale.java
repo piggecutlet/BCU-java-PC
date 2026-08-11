@@ -19,12 +19,16 @@ import java.net.URLClassLoader;
 import java.util.*;
 import java.util.Map.Entry;
 
+/**
+ * UI 文言とチュートリアル文言の上書きを保持し、現在言語から解決する。
+ * 編集操作は共有マップを直接変更し、{@link Page#renewLoc(Page)} は各画面の再構築処理まで連鎖させる。
+ */
 public strictfp class MainLocale {
 
 	public static final int PAGE = 0, INFO = 1, INTERNET = 2, UTIL = 3;
 	public static final Map<String, MainLocale> NAMP = new TreeMap<>();
 	public static final Map<String, TTT> TMAP = new TreeMap<>();
-	public static final String[] LOC_NAME = { "English", "\u4E2D\u6587", "\uD55C\uAD6D\uC5B4", "\u65E5\u672C\u8A9E", "Русский", "Deutsche", "Français", "Español", "Italiano", "TH", }; // FIXME: lang names
+	public static final String[] LOC_NAME = { "English", "\u4E2D\u6587", "\uD55C\uAD6D\uC5B4", "\u65E5\u672C\u8A9E", "Русский", "Deutsche", "Français", "Español", "Italiano", "TH", }; // FIXME: 言語名
 	public static final String[] RENN = { "page", "info", "internet", "util" };
 	private static final ResourceBundle[] RENS = new ResourceBundle[4];
 
@@ -91,7 +95,7 @@ public strictfp class MainLocale {
 		return ans;
 	}
 
-	public static void saveWorks() { // todo: seems to be unused?
+	public static void saveWorks() { // todo: 未使用の可能性あり
 		for (Lang.Locale[] loc : Lang.pref) {
 			TTT ttt = TMAP.get(loc);
 			if (ttt != null && ttt.edited)

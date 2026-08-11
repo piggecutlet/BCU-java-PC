@@ -24,6 +24,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.util.function.Consumer;
 
+/**
+ * 効果フィールドの型に応じた Swing 入力部品を提供し、値変更を所属エディターグループへ通知する基底型。
+ */
 public abstract class SwingEditor extends Editor {
 
 	public static class BoolEditor extends SwingEditor {
@@ -70,7 +73,13 @@ public abstract class SwingEditor extends Editor {
 
 	}
 
+	/**
+	 * 効果メタデータのフィールド型から対応エディターを生成し、識別子選択ページとの橋渡しも行う供給器。
+	 */
 	public static class EditCtrl implements EditorSupplier {
+		/**
+		 * 識別子フィールドごとの選択ページを編集ページ側から供給する契約。
+		 */
 		public interface Supplier {
 			SupPage<Background> getBGSup(IdEditor<Background> edi);
 			SupPage<Music> getMusicSup(IdEditor<Music> edi);
@@ -137,6 +146,9 @@ public abstract class SwingEditor extends Editor {
 
 	}
 
+	/**
+	 * 識別子フィールドを別ページで選択し、復帰時のコールバックで元フィールドへ反映するエディター。
+	 */
 	public static class IdEditor<T extends IndexContainer.Indexable<?, T>> extends SwingEditor {
 
 		private final PageSup<T> page;
@@ -308,12 +320,18 @@ public abstract class SwingEditor extends Editor {
 		}
 	}
 
+	/**
+	 * 識別子エディターに選択ページを提供する関数契約。
+	 */
 	public interface PageSup<T extends IndexContainer.Indexable<?, T>> {
 
 		SupPage<T> get(IdEditor<T> editor);
 
 	}
 
+	/**
+	 * 1効果分のフィールドエディター群と見出しを束ね、データ更新時に表示条件を同期するグループ。
+	 */
 	public static class SwingEG extends EditorGroup {
 
 		public final JL jlm;

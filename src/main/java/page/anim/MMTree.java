@@ -11,6 +11,9 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import java.util.function.IntPredicate;
 
+/**
+ * モデルの親子関係をツリー表示し、展開状態とモデル状態を同期する。
+ */
 class MMTree implements TreeExpansionListener {
 
 	protected final AnimCE anim;
@@ -109,6 +112,9 @@ class MMTree implements TreeExpansionListener {
 
 }
 
+/**
+ * モデルツリーの展開状態が変化したことを編集画面へ通知する。
+ */
 interface TreeCont {
 
 	void collapse();

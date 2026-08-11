@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * アニメーションノードをJVM内DnDでルートまたはグループへ移動するハンドラー。
+ * 同一グループ内の移動も受け付けるが、反映時に各グループをID順で再構築するため任意の並び順は保持されない。
+ * 転送には浅い複製を使い、挿入成功後のMOVE完了時に元ノードを削除してグループ定義へ反映する。
+ */
 public class AnimTreeTransfer extends TransferHandler {
 
     private static final long serialVersionUID = 1L;
@@ -57,7 +62,7 @@ public class AnimTreeTransfer extends TransferHandler {
 
         JTree.DropLocation dl = (JTree.DropLocation) support.getDropLocation();
 
-        //filter if drop location is anim or not
+        // ドロップ先がアニメーション要素ではなくグループであることを確認する
 
         TreePath path = dl.getPath();
 
@@ -85,7 +90,7 @@ public class AnimTreeTransfer extends TransferHandler {
             if (selectedRow == dropRow)
                 return false;
 
-            //check if selected row contains container
+            // 選択範囲に移動不可のグループノードが含まれていないことを確認する
 
             TreePath selectedPath = tree.getPathForRow(selectedRow);
 
@@ -112,7 +117,6 @@ public class AnimTreeTransfer extends TransferHandler {
         TreePath[] paths = tree.getSelectionPaths();
 
         if(paths != null) {
-            //safe casting
             for(TreePath path : paths) {
                 if(!(path.getLastPathComponent() instanceof DefaultMutableTreeNode))
                     return null;
@@ -222,6 +226,9 @@ public class AnimTreeTransfer extends TransferHandler {
         return new DefaultMutableTreeNode(node.getUserObject());
     }
 
+    /**
+     * 複製した木ノード群を、このハンドラー固有のローカルフレーバーで公開する転送オブジェクト。
+     */
     public class NodeTransferable implements Transferable {
         DefaultMutableTreeNode[] nodes;
 

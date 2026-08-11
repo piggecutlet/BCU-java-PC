@@ -49,6 +49,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * ユーザーパックの作成・削除・書き出しと、敵、ステージ、依存パックなどの編集入口を集約する画面。
+ * 一覧の再構築中は選択コールバックを抑止し、依存追加では推移依存の検証完了前に加えた要素を失敗時に巻き戻す。
+ */
 public class PackEditPage extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -535,7 +539,7 @@ public class PackEditPage extends Page {
 			changing = true;
 			UserPack rel = jlt.getSelectedValue();
 
-			//Need to cache parented pack for situation when parent pack of parent pack has password
+			// 親パックの親にもパスワードがある場合に備え、追加済みの親を記録する
 			ArrayList<String> passedParents = new ArrayList<>();
 
 			if(rel.desc.parentPassword != null) {

@@ -7,6 +7,11 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+/**
+ * JOGL Canvasの連続キャプチャをエンコード用キューへ渡す録画抽象。
+ * {@link #end()}は入力終了、{@link #quit()}は中断を通知する別契約であり、
+ * 実際のエンコードと完了通知は{@link RecdThread}が非同期に行う。
+ */
 public abstract class GLRecorder {
 
 	public static GLRecorder getIns(GLCstd scr, String path, int type, RetFunc ob) {
@@ -31,6 +36,9 @@ public abstract class GLRecorder {
 
 }
 
+/**
+ * AWTスクリーンキャプチャをフレームキューへ積み、RecdThreadへ供給する録画実装。
+ */
 class GLRecdBImg extends GLRecorder {
 
 	private final Queue<BufferedImage> qb;

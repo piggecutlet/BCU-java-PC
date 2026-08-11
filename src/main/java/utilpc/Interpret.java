@@ -35,35 +35,40 @@ import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 戦闘データを画面表示用の名称、能力説明、HTML断片へ変換する。
+ * 表示配列は現在ロケールのスナップショットであり、言語変更後は{@link #redefine()}で再構築する。
+ * フィルター配列や生成文はUI上の表示規則で、ゲーム仕様の完全な判定表とは限らない。
+ */
 public class Interpret extends Data {
 
     /**
-     * enemy types
+     * 敵の表示用区分名。添字の意味は利用側の区分値に依存する。
      */
     public static String[] ERARE;
 
     /**
-     * unit rarities
+     * ユニットのレアリティ表示名。
      */
     public static String[] RARITY;
 
     /**
-     * enemy traits
+     * 敵・ユニットで共有する標準特性の表示名。
      */
     public static String[] TRAIT;
 
     /**
-     * star names
+     * 星区分の表示名。
      */
     public static String[] STAR;
 
     /**
-     * ability name
+     * 能力ビットに対応する表示名。
      */
     public static String[] ABIS;
 
     /**
-     * enemy ability name
+     * 敵編集UIに提示する能力名の抜粋。
      */
     public static String[] EABI;
 
@@ -78,47 +83,38 @@ public class Interpret extends Data {
     public static String[] SCORES;
 
     /**
-     * treasure orderer
+     * 基礎・お宝項目を画面順へ並べ替える索引。
      */
     public static final int[] TIND = {0, 1, 18, 19, 20, 21, 22, 23, 2, 3, 4, 5, 24, 25, 26, 27, 28, 6, 7, 8, 9, 10, 11,
             12, 13, 14, 15, 16, 17, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50};
 
     /**
-     * treasure grouper
+     * 並べ替え後のお宝項目を開始位置と要素数でまとめる定義。
      */
     public static final int[][] TCOLP = {{0, 8}, {8, 6}, {14, 3}, {17, 4}, {21, 3}, {29, 22}};
 
     /**
-     * treasure max
+     * 各基礎・お宝項目へ設定できる上限値。
      */
     private static final int[] TMAX = {30, 30, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 600, 1500, 100,
             100, 100, 30, 30, 30, 30, 30, 10, 300, 300, 600, 600, 600, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0};
 
     /**
-     * combo string component
+     * にゃんコンボ説明文の符号と単位を組み立てる部品。
      */
     private static final String[][] CDP = {{"", "+", "-"}, {"_", "_%", "_f", "Lv._"}};
 
     /**
-     * combo string formatter
-     * ---
-     * 1st num (modification):
-     * 1 = add
-     * 2 = minus
-     * ---
-     * 2nd num (unit):
-     * -1 = do not include number
-     * 0 = include number with no units
-     * 1 = x%
-     * 2 = x frames
-     * 3 = Lv. x
+     * にゃんコンボ種別ごとの符号と単位。
+     * 第1値は1が加算、2が減算。
+     * 第2値は-1が数値なし、0が単位なし、1が%、2がフレーム、3がレベル表記。
      */
     private static final int[][] CDC = {{1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 3}, {1, 0}, {1, 1}, {2, 1},
             {1, 1}, {1, 1}, {1, 1}, {2, 2}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1},
             {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, 1}, {1, -1}, {1, -1}, {2, 1}, {1, -1}};
 
-    //Filters abilities and procs that are available for enemies. Also gives better organization to the UI
+    // 敵編集UIへ提示する能力・効果の並び。利用可能性を完全に表す一覧ではない
     public static final int[] EABIIND = {ABI_CSUR, ABI_WAVES, ABI_SNIPERI, ABI_TIMEI, ABI_GHOST, ABI_GLASS, ABI_THEMEI};
     public static final int[] EPROCIND = {Data.P_KB, Data.P_STOP, Data.P_SLOW, Data.P_WEAK, Data.P_CRIT, Data.P_METALKILL, Data.P_WAVE, Data.P_MINIWAVE,
             Data.P_VOLC, Data.P_MINIVOLC, Data.P_BARRIER, Data.P_DEMONSHIELD, Data.P_BREAK, Data.P_SHIELDBREAK, Data.P_WARP, Data.P_CURSE, Data.P_SEAL,
@@ -128,7 +124,7 @@ public class Interpret extends Data {
             Data.P_IMUWARP, Data.P_IMUCURSE, Data.P_IMUSEAL, Data.P_IMUMOVING, Data.P_IMUARMOR, Data.P_IMUPOI, Data.P_IMUPOIATK, Data.P_IMUVOLC,
             Data.P_IMUSPEED, Data.P_IMUSUMMON, Data.P_IMUCANNON, Data.P_DEATHSURGE, Data.P_BLAST, Data.P_IMUBLAST,
             Data.P_DELAY, Data.P_IMUDELAY, Data.P_LETHARGY };
-    //Filters abilities and procs that are available for units. Also gives better organization to the UI
+    // ユニット編集UIへ提示する効果の並び。利用可能性を完全に表す一覧ではない
     public static final int[] UPROCIND = {Data.P_BSTHUNT, Data.P_KB, Data.P_STOP, Data.P_SLOW, Data.P_WEAK, Data.P_BOUNTY, Data.P_CRIT, Data.P_METALKILL, Data.P_WAVE,
             Data.P_MINIWAVE, Data.P_VOLC, Data.P_MINIVOLC, Data.P_BARRIER, Data.P_DEMONSHIELD, Data.P_BREAK, Data.P_SHIELDBREAK, Data.P_WARP, Data.P_CURSE,
             Data.P_SEAL, Data.P_SATK, Data.P_POIATK, Data.P_ATKBASE, Data.P_SUMMON, Data.P_MOVEWAVE, Data.P_SNIPER, Data.P_BOSS, Data.P_TIME,
@@ -199,7 +195,7 @@ public class Interpret extends Data {
         return str;
     }
 
-    public static String deco(int type, BasisSet b) { // 0 = slow
+    public static String deco(int type, BasisSet b) { // 0はスロー
         double mag = ((int) ((b.t().getDecorationMagnification(type + 1, type, true)))) / 100.0;
         return MainLocale.getLoc(MainLocale.UTIL, "dec" + type) + " +" + mag + "%";
     }
@@ -209,6 +205,9 @@ public class Interpret extends Data {
         return MainLocale.getLoc(MainLocale.UTIL, "bas" + type) + " +" + mag + "%";
     }
 
+    /**
+     * 能力・効果の表示文とアイコンに、必要な場合だけ元の効果データを添えてUIへ渡す表示モデル。
+     */
     public static class ProcDisplay {
         private String text;
         private ImageIcon icon = null;
@@ -1003,7 +1002,7 @@ public class Interpret extends Data {
         return new Point((int) ((p.x + pp.x) / size), (int) ((p.y + pp.y) / size));
     }
 
-    public static String readHTMLStage(Stage st, boolean noHtml) { // TODO: cleanup html
+    public static String readHTMLStage(Stage st, boolean noHtml) { // TODO: HTML生成の整理
         boolean exists = st.lim != null && st.lim.stageLimit != null;
         if (!exists)
             return "No stage limit";
@@ -1052,7 +1051,7 @@ public class Interpret extends Data {
     }
 
     public static String readHTML(Stage st) {
-        StageInfo data = st.info;// todo: figure out how to do this with custom stages without stage info (hopefully figure out how to attach all custom stages with stage info????)
+        StageInfo data = st.info;// TODO: StageInfoを持たないカスタムステージの扱いを整理
         boolean isDef = data instanceof DefStageInfo;
         StringBuilder ans = new StringBuilder("<html>");
 
@@ -1188,7 +1187,7 @@ public class Interpret extends Data {
         return ans.toString();
     }
 
-    public static void readDropData(DefStageInfo data, StringBuilder ans) { // fixme: incorrect ItF drop reward
+    public static void readDropData(DefStageInfo data, StringBuilder ans) { // FIXME: 未来編のドロップ報酬が不正確
         if (data.drop == null || data.drop.length == 0) {
             ans.append(Page.get(MainLocale.PAGE, "none"));
             return;
@@ -1298,7 +1297,7 @@ public class Interpret extends Data {
                         .append(form).append("</td><td>")
                         .append(UtilPC.lvText(form, lv)[0]).append("</td>");
                 if (lv.getOrbs() != null) {
-                    // todo: read orb data
+                    // TODO: 本能玉データの表示
                 }
                 ans.append("</tr>");
             }
@@ -1306,7 +1305,7 @@ public class Interpret extends Data {
 
         ans.append("</table><br><br>");
 
-        // todo: add more battle preset info
+        // TODO: 戦闘プリセット情報の表示追加
 
         ans.append("</html>");
 

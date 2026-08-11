@@ -17,6 +17,10 @@ import page.support.UnitTCR;
 
 import java.awt.*;
 
+/**
+ * 形態一覧を現在の宝・推奨レベルで算出した能力値によりソートし、名前セルから詳細へ遷移する表モデル。
+ * ソートは受け取った候補リスト自体の順序を変更する。
+ */
 public class UnitListTable extends SortTable<Form> {
 
 	private static final long serialVersionUID = 1L;

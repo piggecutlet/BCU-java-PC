@@ -7,6 +7,11 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Ogg Vorbis識別ヘッダーの公称ビットレートとファイルサイズから再生時間を概算する。
+ * ストリームを先頭から一方向に消費するため、同一インスタンスで解析をやり直す用途には使えない。
+ * デコード済みサンプル数を読む精密な長さ計測ではなく、現実装には入力ストリームを閉じるAPIもない。
+ */
 public class OggTimeReader {
 	public static final int MAX_VORBIS_BITRATE = 500000;
 

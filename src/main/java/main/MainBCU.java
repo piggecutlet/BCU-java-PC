@@ -40,8 +40,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.function.Consumer;
 
+/**
+ * PC版BCUの起動と、共通層へ渡すデスクトップ実装の初期化を統括する。
+ * 設定読込後に画像・戦闘描画バックエンドとテーマを選択して画面枠を初期化し、
+ * 更新確認、プロファイル読込、表示用データ準備を終えてからメイン画面へ遷移する。
+ */
 public class MainBCU {
 
+	/**
+	 * 共通層のファイル配置、確認ダイアログ、エラー通知をPC版の実行環境へ接続する。
+	 * {@link #initProfile()} はアセット、標準データ、バックアップ、作業領域、パック、
+	 * 編成、リプレイの依存順を保持する起動処理でもある。
+	 */
 	public static class AdminContext implements Context {
 
 		@Override
@@ -410,6 +420,10 @@ public class MainBCU {
 		return res.exists() && assets.exists();
 	}
 
+	/**
+	 * 指定時間後に一度だけ自動保存し、完了後に次回タイマーを張り直す。
+	 * 設定変更時は既存スレッドを割り込みで破棄する前提。
+	 */
 	private static class AutoSaveTimer extends Thread {
 
 		public AutoSaveTimer() {

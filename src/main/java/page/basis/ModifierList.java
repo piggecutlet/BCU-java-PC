@@ -17,6 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * 現在編成に有効な城補正、にゃんコンボ、ステージ補正を合成して表示する一覧。
+ * {@link #renew()} は {@link BasisSet#current()} を再参照するため、表示内容は生成時の編成に固定されない。
+ */
 public class ModifierList extends JList<Object> {
     private List<Combo> combos;
     private Set<Integer> banned;
@@ -28,7 +32,7 @@ public class ModifierList extends JList<Object> {
         ComboListTable.redefine();
     }
 
-    public ModifierList() { // todo: include orb modifiers
+    public ModifierList() { // todo: 本能玉補正を含める
         super();
         BasisSet lineup = BasisSet.current();
         setCellRenderer(new DefaultListCellRenderer() {

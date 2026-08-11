@@ -12,6 +12,9 @@ import java.awt.image.BufferedImage;
 
 import static utilpc.Interpret.*;
 
+/**
+ * 能力・効果・攻撃型の識別子列を、対応アイコン付きで選択させるリスト。
+ */
 public class AttList extends JList<String> {
 
 	private static final long serialVersionUID = 1L;

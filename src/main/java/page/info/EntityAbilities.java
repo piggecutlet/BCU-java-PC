@@ -14,6 +14,9 @@ import utilpc.UtilPC;
 import javax.swing.*;
 import java.util.List;
 
+/**
+ * 敵倍率または味方レベルを解釈し、対象エンティティの能力・効果一覧を比較画面向けに構築するページ。
+ */
 public class EntityAbilities extends Page {
 
     private static final long serialVersionUID = 1L;

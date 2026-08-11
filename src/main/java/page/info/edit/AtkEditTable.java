@@ -10,6 +10,10 @@ import javax.swing.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
+/**
+ * 選択中の攻撃モデルを編集し、攻撃固有の効果表と同じ {@link AtkDataModel} を共有するページ。
+ * 表示攻撃力はレベル・宝倍率込みで、入力値は基礎攻撃力へ逆算して保持する。
+ */
 class AtkEditTable extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -86,6 +90,9 @@ class AtkEditTable extends Page {
 		set(fmv, x, y, 200, 400, 200, 50);
 	}
 
+	/**
+	 * 編集対象を切り替え、共通効果の使用可否を含めて攻撃欄と効果表を同時に更新する。
+	 */
 	protected void setData(AtkDataModel data, double multi, double lvMulti) {
 		adm = data;
 		mul = multi;

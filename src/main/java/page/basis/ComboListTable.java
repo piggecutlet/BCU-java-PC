@@ -14,6 +14,10 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
+/**
+ * にゃんコンボを構成キャラや発動レベルとともに表示・ソートする表。
+ * キャラ列のクリックは表自身を変更せず、所有画面へ対象ユニットを通知する。
+ */
 public class ComboListTable extends SortTable<Combo> {
 
 	private static final long serialVersionUID = 1L;

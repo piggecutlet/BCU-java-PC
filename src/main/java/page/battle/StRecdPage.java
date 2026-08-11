@@ -13,6 +13,9 @@ import page.support.ReorderListener;
 import javax.swing.*;
 import java.util.List;
 
+/**
+ * 特定ステージに関連付けるリプレイの追加・削除・並べ替えを管理する画面。
+ */
 public class StRecdPage extends AbRecdPage {
 
 	private static final long serialVersionUID = 1L;

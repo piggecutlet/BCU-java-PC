@@ -24,6 +24,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Hashtable;
 
+/**
+ * アニメーション選択画面に共通する再生、拡大・移動、フレーム移動、静止画・動画出力を提供する。
+ * 描画実体は{@link ViewBox}へ委譲するが、実装はAWTコンポーネントとして配置できる必要がある。
+ * {@link #exit()} 呼出時には以前の周期を復元せず、その時点のアニメーション性能設定に応じて全体タイマー周期を60 FPSまたは30 FPSの標準値へ上書きする。
+ */
 public abstract class AbViewPage extends Page {
 
 	private static final long serialVersionUID = 1L;

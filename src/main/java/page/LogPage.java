@@ -12,6 +12,10 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.*;
 
+/**
+ * ログディレクトリの有効な記録を列挙し、選択内容を読み込んで表示する画面。
+ * ファイル走査と全文読込は呼び出し元スレッドで同期実行され、外部表示は OS の関連付けへ委ねる。
+ */
 public class LogPage extends Page {
 
     private static final long serialVersionUID = 1L;

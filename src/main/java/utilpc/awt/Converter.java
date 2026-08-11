@@ -5,6 +5,10 @@ import java.awt.image.ColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
+/**
+ * 描画先RGBを変換するJava2D Composite。
+ * 現行のmode 0では入力画像ではなく描画先の各色を反転して出力する。
+ */
 public class Converter implements Composite, CompositeContext {
 
 	private final int mode;

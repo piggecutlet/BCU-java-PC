@@ -6,6 +6,10 @@ import java.awt.event.MouseEvent;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * ヘッダークリックで任意列の昇順・降順を切り替える表の基底型。
+ * {@link #setList(List)} は受け取ったリスト自体を並べ替えるため、呼び出し側と同じ順序を共有する。
+ */
 public abstract class SortTable<T> extends AbJTable {
 
 	private static final long serialVersionUID = 1L;
@@ -75,6 +79,9 @@ public abstract class SortTable<T> extends AbJTable {
 
 }
 
+/**
+ * 表が定義する列別比較へ列番号と並べ替え方向を束縛する比較器。
+ */
 class Comp<T> implements Comparator<T> {
 
 	private final SortTable<T> t;

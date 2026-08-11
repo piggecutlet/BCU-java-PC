@@ -10,7 +10,14 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
+/**
+ * HSBまたはRGBの1成分をバー、残り2成分を平面として編集するカラーピッカー。
+ * 色配列を更新するたびに親ページへ自身をコールバックし、外部表示との同期を要求する。
+ */
 public class ColorPicker extends JPanel {
+    /**
+     * バーで単独操作する色成分。
+     */
     public enum MODE {
         HUE,
         SATURATION,
@@ -163,7 +170,7 @@ public class ColorPicker extends JPanel {
     public void updateField() {
         switch (mode) {
             case HUE:
-                //x-axis = S, y-axis = B
+                // X軸は彩度、Y軸は明度
                 for(int x = 0; x < colorField.getWidth(); x++) {
                     for(int y = 0; y < colorField.getHeight(); y++) {
                         int c = Color.HSBtoRGB(hsb[0], x / 360f, (360f - y) / 360f);
@@ -174,7 +181,7 @@ public class ColorPicker extends JPanel {
 
                 break;
             case SATURATION:
-                //x-axis = H, y-axis = B
+                // X軸は色相、Y軸は明度
                 for(int x = 0; x < colorField.getWidth(); x++) {
                     for(int y = 0; y < colorField.getHeight(); y++) {
                         int c = Color.HSBtoRGB(x / 360f, hsb[1], (360f - y) / 360f);
@@ -185,7 +192,7 @@ public class ColorPicker extends JPanel {
 
                 break;
             case BRIGHTNESS:
-                //x-axis = H, y-axis = S
+                // X軸は色相、Y軸は彩度
                 for(int x = 0; x < colorField.getWidth(); x++) {
                     for(int y = 0; y < colorField.getHeight(); y++) {
                         int c = Color.HSBtoRGB(x / 360f, (360f - y) / 360f, hsb[2]);
@@ -196,7 +203,7 @@ public class ColorPicker extends JPanel {
 
                 break;
             case RED:
-                //x-axis = G, y-axis = B
+                // X軸は緑、Y軸は青
                 for(int x = 0; x < colorField.getWidth(); x++) {
                     for(int y = 0; y < colorField.getHeight(); y++) {
                         int c = 0xFF;
@@ -211,7 +218,7 @@ public class ColorPicker extends JPanel {
 
                 break;
             case GREEN:
-                //x-axis = R, y-axis = B
+                // X軸は赤、Y軸は青
                 for(int x = 0; x < colorField.getWidth(); x++) {
                     for(int y = 0; y < colorField.getHeight(); y++) {
                         int c = 0xFF;
@@ -226,7 +233,7 @@ public class ColorPicker extends JPanel {
 
                 break;
             case BLUE:
-                //x-axis = R, y-axis = G
+                // X軸は赤、Y軸は緑
                 for(int x = 0; x < colorField.getWidth(); x++) {
                     for(int y = 0; y < colorField.getHeight(); y++) {
                         int c = 0xFF;

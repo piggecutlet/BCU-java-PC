@@ -36,6 +36,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
+/**
+ * PC版の設定、作業データ、画像、ログを永続化する。
+ * ログ準備は標準出力の差替えより先に必要で、終了時の{@link #logClose(boolean)}は
+ * 設定保存、必要なら全データ保存、ストリーム解放、実行中印の後始末をまとめて行う。
+ */
 @SuppressWarnings("UnusedReturnValue")
 public class BCUWriter extends DataIO {
 
@@ -316,6 +321,9 @@ public class BCUWriter extends DataIO {
 
 }
 
+/**
+ * println経由の実出力有無を記録し、空ログを終了時に破棄できるようにするログストリーム。
+ */
 class WriteStream extends PrintStream {
 
 	protected boolean writed = false;

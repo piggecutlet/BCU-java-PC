@@ -11,6 +11,10 @@ import java.awt.image.BufferedImage;
 
 import static page.anim.IconBox.IBConf.*;
 
+/**
+ * アイコン編集用の前後処理と切り出しを {@link ViewBoxDef} に重ねる Java2D 表示部品。
+ * 描画中は共有設定の基準線表示を一時的に無効化し、終了前に元の値へ戻す。
+ */
 class IconBoxDef extends ViewBoxDef implements IconBox {
 
 	private static final long serialVersionUID = 1L;

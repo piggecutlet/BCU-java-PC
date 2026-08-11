@@ -11,6 +11,10 @@ import utilpc.awt.FG2D;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * 戦闘モデルをオフスクリーン画像へ描画する Java2D の戦闘表示部品。
+ * 描画中はペインターをロックし、{@link #releaseData()} は保持する戦闘状態のリソースを解放する。
+ */
 class BattleBoxDef extends Canvas implements BattleBox {
 
 	private static final long serialVersionUID = 1L;

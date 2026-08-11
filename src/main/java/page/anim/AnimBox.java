@@ -17,6 +17,9 @@ import utilpc.awt.FG2D;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * アニメーション編集用プレビューの描画方式を抽象化する。
+ */
 interface AnimBox {
 	static AnimBox getInstance() {
 		if(MainBCU.USE_JOGL)
@@ -44,6 +47,9 @@ interface AnimBox {
 	Point getPoint(Point p);
 }
 
+/**
+ * Java2Dのオフスクリーン画像を介してアニメーションを描画するプレビュー。
+ */
 class BufferedAnim extends Canvas implements AnimBox {
 
 	private static final long serialVersionUID = 1L;
@@ -145,6 +151,9 @@ class BufferedAnim extends Canvas implements AnimBox {
 	}
 }
 
+/**
+ * OpenGLでアニメーションを描画するプレビュー。
+ */
 class GLAnimBox extends GLCstd implements AnimBox {
 
 	private static final long serialVersionUID = 1L;

@@ -17,6 +17,11 @@ import java.io.InputStream;
 import static jogl.GLStatic.GLP;
 import static jogl.GLStatic.MIP;
 
+/**
+ * JOGLのTextureDataと部分画像座標を保持するFakeImage実装。
+ * CPU画素アクセスは提供せず、部分画像は親とTextureDataを共有する。
+ * 実際のGLテクスチャ生成・破棄はコンテキスト別の{@link ResManager}が担当する。
+ */
 public class GLImage implements FakeImage {
 
 	protected static GLImage build(Object o) {

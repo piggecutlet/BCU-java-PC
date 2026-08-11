@@ -5,6 +5,10 @@ import java.awt.image.ColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
+/**
+ * 入力画像のアルファと指定不透明度を使い、描画先RGBを減衰させるマスクComposite。
+ * 入力色は使用せず、出力は3成分RGBの描画先を前提とする。
+ */
 public class Masker implements Composite, CompositeContext {
     private final int opa;
 

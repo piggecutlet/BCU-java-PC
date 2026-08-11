@@ -17,6 +17,10 @@ import java.util.Set;
 
 import static utilpc.Interpret.RARITY;
 
+/**
+ * パック別の出撃レベル制限を参照し、対象グループと所属ユニットまで掘り下げて表示する画面。
+ * パック、制限、グループの順に選択を連動させ、無効になった下位選択を破棄する。
+ */
 public class LvRestrictPage extends Page {
 
 	private static final long serialVersionUID = 1L;

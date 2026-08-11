@@ -25,6 +25,10 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+/**
+ * ユーザーパックのBGMファイルとループ開始時刻を管理する画面。
+ * OGGの追加・差し替え・削除をワークスペースへ反映し、再読込時に再生キャッシュも破棄する。
+ */
 public class MusicEditPage extends Page {
 
 	private static final long serialVersionUID = 1L;

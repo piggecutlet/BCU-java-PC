@@ -20,6 +20,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ステージの敵出現条件と残数を表示し、戦闘進行に合わせて出現済み行を除去する表。
+ */
 class ComingTable extends AbJTable {
 
 	private static final long serialVersionUID = 1L;

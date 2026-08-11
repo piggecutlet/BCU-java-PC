@@ -7,6 +7,12 @@ import javax.sound.sampled.LineEvent.Type;
 import javax.sound.sampled.LineListener;
 import java.util.ArrayDeque;
 
+/**
+ * Java SoundのClipを再生状態、音量、ループ位置とともに管理する。
+ * STOP通知では、識別子が非負かつ8、9、20、21、22以外で、登録済みプールがある場合だけ自身を戻す。
+ * {@link #release()}はClipと音量制御を破棄するが、STOP通知と競合すると解放済みインスタンスが
+ * プールへ戻る可能性がある。
+ */
 public class BCPlayer implements LineListener {
 	private static final int FACTOR = 20;
 

@@ -6,6 +6,10 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * 共通座標PとAWTのPoint、Dimension、Rectangle間を橋渡しするPC用座標型。
+ * 継承元と同様に倍率・除算操作は自身を更新する。
+ */
 public strictfp class PP extends P {
 
 	public PP(Dimension d) {

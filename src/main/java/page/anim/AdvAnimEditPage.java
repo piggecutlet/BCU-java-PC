@@ -18,6 +18,10 @@ import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 
+/**
+ * 単一アニメーションをモデル階層単位で詳細編集する画面。
+ * ツリー選択を部位トラックへ展開し、複数トラックへの編集をまとめて適用する。
+ */
 public class AdvAnimEditPage extends Page implements TreeCont {
 
 	private static final long serialVersionUID = 1L;
@@ -82,6 +86,9 @@ public class AdvAnimEditPage extends Page implements TreeCont {
 		return back;
 	}
 
+	/**
+	 * 表の挿入・並べ替え結果を選択へ反映し、プレビューの再生成後も時刻を維持する。
+	 */
 	@Override
 	public void callBack(Object o) {
 		if (o instanceof int[])
@@ -109,6 +116,9 @@ public class AdvAnimEditPage extends Page implements TreeCont {
 		selectTree(false);
 	}
 
+	/**
+	 * モデルツリーの選択と展開状態から、対象部位のトラック選択を再構成する。
+	 */
 	public void selectTree(boolean bv) {
 		if (isAdj())
 			return;
@@ -213,6 +223,9 @@ public class AdvAnimEditPage extends Page implements TreeCont {
 		mpet.setRowHeight(size(x, y, 50));
 	}
 
+	/**
+	 * 現在状態を描画してから、未停止時のみ次のアニメーション状態へ進める。
+	 */
 	@Override
     public synchronized void onTimer(int t) {
 		super.onTimer(t);
@@ -337,17 +350,18 @@ public class AdvAnimEditPage extends Page implements TreeCont {
 								ints[1] *= -1;
 							}));
 				} else if (angle != 0) {
-					Part[] data = anim.parts; // copy parts
-					anim.parts = new Part[++anim.n]; // add slot for new part
-					System.arraycopy(data, 0, anim.parts, 0, data.length); // preserve parts
-					Part newPart = new Part(partID, 11); // create part
-					newPart.validate(); // validate
-					newPart.moves = new int[++newPart.n][]; // add slot for new move
-					newPart.moves[0] = new int[] { 0, angle * -2, 0, 0 }; // set angle to negative ma_model angle
-					newPart.validate(); // validate part
-					anim.parts[anim.n - 1] = newPart; // set part to anim parts
+					// ma_modelの角度を反転する回転トラックを追加
+					Part[] data = anim.parts;
+					anim.parts = new Part[++anim.n];
+					System.arraycopy(data, 0, anim.parts, 0, data.length);
+					Part newPart = new Part(partID, 11);
+					newPart.validate();
+					newPart.moves = new int[++newPart.n][];
+					newPart.moves[0] = new int[] { 0, angle * -2, 0, 0 };
+					newPart.validate();
+					anim.parts[anim.n - 1] = newPart;
 				}
-				anim.validate(); // validate animation before next ma_model part check
+				anim.validate();
 			}
 			maet.anim.unSave("maanim revert");
 			callBack(null);

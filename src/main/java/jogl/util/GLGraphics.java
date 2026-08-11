@@ -13,8 +13,16 @@ import java.awt.*;
 
 import static com.jogamp.opengl.GL.*;
 
+/**
+ * 共通描画APIをGL2の即時モード、テクスチャ、シェーダー合成へ変換する。
+ * 画像描画と図形描画でGL状態を切り替え、座標変換は画面寸法から正規化座標へ適用する。
+ * 使用後は{@link #dispose()}を呼び、図形モードへ戻してアクティブ数を整合させる必要がある。
+ */
 public class GLGraphics implements GeoAuto {
 
+	/**
+	 * テクスチャを使わない図形描画を担当し、親GLGraphicsの変換と合成状態を共有する。
+	 */
 	public static class GeomG {
 
 		private final GLGraphics gra;
@@ -65,16 +73,16 @@ public class GLGraphics implements GeoAuto {
 
 			float endX = i+k;
 
-			//Formula : (x-i-k/2)^2/(k/2)^2 + (y-j-l/2)^2/(l/2)^2 = 1
+			// 楕円式: (x-i-k/2)^2/(k/2)^2 + (y-j-l/2)^2/(l/2)^2 = 1
 
 			g.glBegin(GL_LINE_LOOP);
 
-			//y > 0
+			// 中心線より下側
 			for(float s = i; s < endX; s++) {
 				addP(s, (int) ((l /2)*Math.sqrt(1-Math.pow((s- i -(k /2.0))/(k /2.0), 2))+ j + l /2));
 			}
 
-			//y < 0
+			// 中心線より上側
 			for(float s = endX; s >= i; s--) {
 				addP(s, - (int) ((l /2)*Math.sqrt(1-Math.pow((s- i -(k /2.0))/(k /2.0), 2))+ j + l /2));
 			}
@@ -104,16 +112,16 @@ public class GLGraphics implements GeoAuto {
 
 			float endX = i+k;
 
-			//Formula : (x-i-k/2)^2/(k/2)^2 + (y-j-l/2)^2/(l/2)^2 = 1
+			// 楕円式: (x-i-k/2)^2/(k/2)^2 + (y-j-l/2)^2/(l/2)^2 = 1
 
 			g.glBegin(GL2.GL_POLYGON);
 
-			//y > 0
+			// 中心線より下側
 			for(float s = i; s < endX; s++) {
 				addP(s, (int) ((l /2)*Math.sqrt(1-Math.pow((s- i -(k /2.0))/(k /2.0), 2))+ j + l /2));
 			}
 
-			//y < 0
+			// 中心線より上側
 			for(float s = endX; s >= i; s--) {
 				addP(s, - (int) ((l /2)*Math.sqrt(1-Math.pow((s- i -(k /2.0))/(k /2.0), 2))+ j + l /2));
 			}
@@ -395,7 +403,7 @@ public class GLGraphics implements GeoAuto {
 
 	@Override
 	public void setComposite(int mode, int p0, int p1) {
-		if (mode == GRAY) { // 1-d
+		if (mode == GRAY) { // 出力色は1-描画先色
 			checkMode(PURE);
 			g.glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ZERO);
 			setColor(WHITE);

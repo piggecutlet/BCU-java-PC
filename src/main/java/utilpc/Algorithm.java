@@ -9,8 +9,16 @@ import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ * PC画像処理で使うHSB色調変換と、複数矩形の重なりなし配置探索を提供する。
+ * 矩形配置は面積、同面積なら外周長を小さくする組合せ探索であり、
+ * 入力数の増加に対して軽量な処理ではない。
+ */
 public class Algorithm {
 
+	/**
+	 * 矩形ごとの配置座標、原点配置要素、配置全体の寸法を返す結果。
+	 */
 	public static class SRResult {
 
 		public int[][] pos;

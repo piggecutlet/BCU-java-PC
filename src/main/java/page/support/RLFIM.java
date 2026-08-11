@@ -7,6 +7,10 @@ import java.util.Vector;
 import java.util.function.Consumer;
 import common.pack.IndexContainer;
 
+/**
+ * {@link FixIndexMap} の追加・削除・並べ替えを一覧表示と同期する {@link ReorderList}。
+ * 追加・削除ではデータ更新後に選択を通知し、すべての変更を開始・終了コールバックで囲む。
+ */
 public class RLFIM<T extends IndexContainer.Indexable<?, T>> extends ReorderList<T> implements ReorderListener<T> {
 
 	private static final long serialVersionUID = 1L;

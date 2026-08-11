@@ -3,6 +3,10 @@ package utilpc;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * 定義済み基準色に近い画素だけを、彩度・明度比とアルファを保って別の基準色へ置換する。
+ * 対象BufferedImageをその場で更新し、座標指定がなければ画像全体を処理する。
+ */
 public class ReColor {
 
 	public static final String[] strs, strf;

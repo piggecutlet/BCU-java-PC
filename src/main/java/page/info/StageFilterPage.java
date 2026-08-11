@@ -12,6 +12,9 @@ import javax.swing.*;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * 渡されたステージ集合を名前で絞り込み、選択結果を {@link StagePage} の詳細表示へ同期するページ。
+ */
 public class StageFilterPage extends StagePage {
 
 	private static final long serialVersionUID = 1L;

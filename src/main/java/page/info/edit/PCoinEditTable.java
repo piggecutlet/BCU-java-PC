@@ -22,6 +22,10 @@ import java.util.Vector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * 選択中の本能項目について種類・最大レベル・補正幅・対象属性を編集するページ。
+ * 本能種類の変更時は既定配列へ置換し、候補一覧から他項目と重複する種類や既得属性を除外する。
+ */
 public class PCoinEditTable extends Page {
 
     private static final long serialVersionUID = 1L;

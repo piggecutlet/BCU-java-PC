@@ -26,6 +26,10 @@ import java.util.Vector;
 
 import static utilpc.Interpret.*;
 
+/**
+ * 形態候補をレア度・属性・能力・攻撃型・パック範囲で抽出し、名前条件を重ねて親ページへ返す基底ページ。
+ * 各条件群の OR/AND トグルは群内の結合方法を切り替え、未選択の群は制約しない。
+ */
 public abstract class UnitFilterBox extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -131,8 +135,7 @@ public abstract class UnitFilterBox extends Page {
 	}
 
 	/**
-		0 - filter both type and name
-	 	1 - only filter by name
+	 * {@code type == 0} では型条件から候補を再構築し、{@code type == 1} では保持中の候補へ名前条件だけを適用する。
 	 */
 	protected void confirm(int type) {
 		getFront().callBack(type == 0 ? filterType()
@@ -141,6 +144,9 @@ public abstract class UnitFilterBox extends Page {
 	}
 }
 
+/**
+ * 条件をトグルボタン群で指定するユニットフィルター。
+ */
 class UFBButton extends UnitFilterBox {
 
 	private static final long serialVersionUID = 1L;
@@ -306,6 +312,9 @@ class UFBButton extends UnitFilterBox {
 
 }
 
+/**
+ * 条件を複数選択リストで指定し、カスタムパックや出撃制限も選択的に適用するユニットフィルター。
+ */
 class UFBList extends UnitFilterBox {
 
 	private static final long serialVersionUID = 1L;

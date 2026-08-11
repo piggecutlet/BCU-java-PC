@@ -6,6 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.function.Function;
 
+/**
+ * 行番号に対する判定結果が真の要素を取り消し線付きで表示する一覧。
+ * 判定関数は {@link #setList(Object[])} で渡した配列と同じ添字体系を使う必要がある。
+ */
 public class CrossList<T> extends JList<T> {
     private Function<Integer, Boolean> check;
     private T[] list;

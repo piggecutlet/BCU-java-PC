@@ -6,6 +6,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 登録した入力欄だけを循環し、無効な入力欄を飛ばすフォーカス移動規則。
+ * {@link #end()} の呼び出し後は登録順を固定し、新しい入力欄を受け付けない。
+ */
 public class ListJtfPolicy extends FocusTraversalPolicy {
 
 	private final List<JTF> list = new ArrayList<>();

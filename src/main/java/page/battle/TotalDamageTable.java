@@ -7,6 +7,9 @@ import page.Page;
 import page.support.SortTable;
 import page.support.UnitTCR;
 
+/**
+ * 現在の編成枠ごとに累積与ダメージと被ダメージを集計表示する表。
+ */
 public class TotalDamageTable extends SortTable<Form> {
     private static final long serialVersionUID = 1L;
 

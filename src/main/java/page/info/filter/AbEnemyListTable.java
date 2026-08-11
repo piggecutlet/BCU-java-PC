@@ -18,6 +18,10 @@ import page.support.SortTable;
 
 import java.awt.*;
 
+/**
+ * 通常敵とランダム敵を共通表でソートし、種類に応じて敵詳細またはランダム敵編集へ遷移する表モデル。
+ * ランダム敵には能力列がないため、能力列の並べ替えでは通常敵との種別順を先に確定する。
+ */
 public class AbEnemyListTable  extends SortTable<AbEnemy> {
 
     private static final long serialVersionUID = 1L;

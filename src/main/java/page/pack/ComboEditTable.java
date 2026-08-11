@@ -17,6 +17,10 @@ import javax.swing.table.TableCellEditor;
 import java.awt.*;
 import java.util.stream.IntStream;
 
+/**
+ * にゃんコンボを行、属性と構成フォームを列として直接編集する表。
+ * 表示列は {@code lnk} でモデル列へ変換し、グループ列とフォーム列のクリックを親画面へ通知する。
+ */
 public class ComboEditTable extends AbJTable {
 
     private static final long serialVersionUID = 1L;

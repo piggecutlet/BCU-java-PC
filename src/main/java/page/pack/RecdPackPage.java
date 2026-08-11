@@ -10,6 +10,10 @@ import javax.swing.*;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * ユーザーパックに属するリプレイを識別子順で表示し、選択中のリプレイ名を変更する画面。
+ * 一覧更新後も同一オブジェクトの選択を復元し、基底画面の再生・削除操作と同期する。
+ */
 public class RecdPackPage extends AbRecdPage {
 
 	private static final long serialVersionUID = 1L;

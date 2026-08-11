@@ -20,6 +20,10 @@ import utilpc.Theme;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * 実行時設定を編集し、描画、音量、言語、検索などの共有状態へ即時反映する画面。
+ * 一部の変更は UI ツリーやタイマーをその場で更新し、再起動が必要な項目は保存終了画面へ遷移する。
+ */
 public class ConfigPage extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -78,7 +82,7 @@ public class ConfigPage extends Page {
 	private final JSlider jsse = new JSlider(0, 100);
 	private final JSlider jsui = new JSlider(0, 100);
 	private final JSlider jsba = new JSlider(0, 50);
-	private final JList<CommonStatic.Lang.Locale> jls = new JList<>(Interpret.getLocales()); // TODO: reorderlist for custom priority
+	private final JList<CommonStatic.Lang.Locale> jls = new JList<>(Interpret.getLocales()); // TODO: カスタム優先順位向けの並べ替え可能リスト
 	private final JBTN row = new JBTN(MainLocale.PAGE, CommonStatic.getConfig().twoRow ? "tworow" : "onerow");
 	private final JBTN vcol = new JBTN(MainLocale.PAGE, "viewcolor");
 	private final JBTN vres = new JBTN(MainLocale.PAGE, "viewreset");

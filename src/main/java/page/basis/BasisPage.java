@@ -32,6 +32,10 @@ import java.util.stream.Collectors;
 
 import static common.battle.BasisSet.current;
 
+/**
+ * 基礎セット、編成、レベル、にゃんコンボ、城設定を一体で編集する画面。
+ * 選択や並べ替えは {@link BasisSet#current()} と配下モデルを直接変更し、関連一覧と宝物表示を同期更新する。
+ */
 public class BasisPage extends LubCont {
 
 	private static final long serialVersionUID = 1L;

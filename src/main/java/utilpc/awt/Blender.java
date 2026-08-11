@@ -7,6 +7,11 @@ import java.awt.image.ColorModel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
+/**
+ * 共通描画APIの複数ブレンド方式をJava2DのCompositeとして画素合成する。
+ * ViewBoxの透明背景設定に応じてRGBとRGBAの出力経路を切り替える。
+ * CompositeContextは状態を共有するが、dispose対象の外部資源は保持しない。
+ */
 public class Blender implements Composite, CompositeContext {
 
 	private final int opa, glow;

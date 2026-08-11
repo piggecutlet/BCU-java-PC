@@ -14,6 +14,10 @@ import java.util.Vector;
 
 import static utilpc.Interpret.*;
 
+/**
+ * カスタム敵の属性と能力ビットを編集し、選択確定ごとに対象モデルと親編集ページを同期するページ。
+ * {@link #setData(int, ArrayList)} 中は選択イベントによるモデル書き戻しを抑止する。
+ */
 public class EnemyEditBox extends Page {
 
 	private static final long serialVersionUID = 1L;

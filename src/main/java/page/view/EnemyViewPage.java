@@ -21,6 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * 敵を選択してアニメーションと能力情報を表示し、許可された素材を作業領域へ複製する。
+ * 複数選択時も先頭要素のパック権限を確認してから各アニメーションを展開する。
+ */
 public class EnemyViewPage extends AbViewPage {
 
 	private static final long serialVersionUID = 1L;

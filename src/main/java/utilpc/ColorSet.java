@@ -3,6 +3,10 @@ package utilpc;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * NimbusのUIManagerキーへ一括適用するPC版カラーパレット。
+ * {@link #setTheme()}はグローバルなLookAndFeel状態を変更するため、画面生成前の適用を前提とする。
+ */
 public class ColorSet {
 	public final Color CONTROL;
 

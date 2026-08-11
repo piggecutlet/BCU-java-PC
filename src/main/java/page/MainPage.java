@@ -23,6 +23,10 @@ import page.view.*;
 
 import javax.swing.*;
 
+/**
+ * 各閲覧・編集機能への入口となるルート画面。
+ * 再表示時にメモリ情報と継続可能な戦闘状態を再評価し、作者変更は全編集可能パックへ即時反映する。
+ */
 public class MainPage extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -243,7 +247,7 @@ public class MainPage extends Page {
 		bckp.setToolTipText(get(MainLocale.PAGE,"bckptip"));
 
 		add(logs);
-		logs.setToolTipText(""); // TODO: Logs tool tip
+		logs.setToolTipText(""); // TODO: ログのツールチップ
 
 		add(refr);
 		add(tips);

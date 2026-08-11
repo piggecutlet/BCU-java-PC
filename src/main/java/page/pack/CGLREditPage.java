@@ -21,6 +21,10 @@ import java.awt.event.FocusEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ユーザーパックのキャラグループと出撃レベル制限を一体で編集する画面。
+ * グループ、所属ユニット、制限、制限対象グループの連動選択を更新中フラグで直列化する。
+ */
 public class CGLREditPage extends Page {
 
 	private static final long serialVersionUID = 1L;

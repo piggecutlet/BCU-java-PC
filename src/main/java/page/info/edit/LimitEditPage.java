@@ -12,6 +12,10 @@ import page.Page;
 
 import javax.swing.*;
 
+/**
+ * ステージマップの追加制限を対象ステージ・星ごとに選択し、基本制限と詳細制限を同時編集するページ。
+ * 制限選択時に未作成の {@link StageLimit} を生成し、両サブ表の編集対象を同じ {@link Limit} へ同期する。
+ */
 public class LimitEditPage extends Page {
 
 	private static final long serialVersionUID = 1L;

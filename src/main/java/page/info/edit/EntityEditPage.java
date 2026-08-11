@@ -43,6 +43,10 @@ import java.util.*;
 
 import static common.util.Data.*;
 
+/**
+ * カスタム敵・味方に共通する本体値、攻撃列、効果列を直接編集する基底ページ。
+ * 攻撃リストの選択は攻撃編集表と効果表の編集対象を同時に切り替え、再表示中はイベントの書き戻しを抑止する。
+ */
 public abstract class EntityEditPage extends Page implements SwingEditor.EditCtrl.Supplier {
 
     private static final long serialVersionUID = 1L;
@@ -455,6 +459,9 @@ public abstract class EntityEditPage extends Page implements SwingEditor.EditCtr
 
     }
 
+    /**
+     * 対象モデルから全編集欄を再構築し、現在の攻撃選択を有効範囲へ補正して各サブ編集表へ同期する。
+     */
     protected void setData(CustomEntity data) {
         changing = true;
 

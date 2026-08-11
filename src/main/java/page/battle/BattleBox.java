@@ -43,12 +43,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 戦闘状態の描画面と、表示座標に対する入力操作を抽象化する。
+ */
 public interface BattleBox {
 
+	/**
+	 * 戦闘状態を背景、背景効果のpreDraw、城、砲射程、ユニット・攻撃効果、城体力、背景効果のpostDraw、背景オーバーレイ、下部UI、上部UIの順で描画する。
+	 * ドラッグとホイール操作は戦場の表示位置・倍率を直接変更し、描画状態をリセットする。
+	 */
 	class BBPainter implements BattleConst {
 
 		private static final float exp = 0.9f, sprite = 0.8f;
-		private static final short road_h = 156; // in p
+		private static final short road_h = 156; // p単位
 		private static final short off = 200;
 		private static final byte DEP = 4, wave = 28;
 		private static final short castw = 128, casth = 256;
@@ -85,13 +92,13 @@ public interface BattleBox {
 		protected final OuterBox page;
 		protected final BattleBox box;
 
-		protected float corr, unir; // siz = pix/p;
+		protected float corr, unir; // sizはpix/p
 
 		private StageBasis sb;
 		private final int maxW;
 		private final int maxH = 510 * 3;
-		private final int minH = 510; // in p
-		private int midh, prew, preh; // in pix
+		private final int minH = 510; // p単位
+		private int midh, prew, preh; // ピクセル単位
 		private final StageNamePainter snam;
 
 		private float minSiz = -1;
@@ -99,14 +106,14 @@ public interface BattleBox {
 
 		private float groundHeight = -1;
 
-		private P mouse; // in pix
+		private P mouse; // ピクセル単位
 
 		/**
-		 * Dragged time for calculating velocity of cursor
+		 * カーソル速度の計算に使うドラッグ継続フレーム数。
 		 */
 		public int dragFrame = 0;
 		/**
-		 * Boolean which tells mouse is dragging or not
+		 * マウスをドラッグ中か。
 		 */
 		public boolean dragging = false;
 
@@ -330,9 +337,9 @@ public interface BattleBox {
 
 				g.drawImage(fire, w - fw - 4 * hr, h - fh - 4 * hr, fw, fh);
 			}
-			//Decide lineup icon's size, 0.675 is guessed value by comparing BC and BCU
+			// 編成アイコンの大きさを決定。0.675はBCとBCUの比較から推定した値
 			hr = avah * 0.675f / aux.slot[0].getImg().getHeight();
-			//Make lineup won't cover cannon button and money upgrade button
+			// 編成がにゃんこ砲ボタンと働きネコレベルボタンを覆わないよう制限
 			hr = Math.min(hr, (box.getWidth() - iw * 2f) / aux.slot[0].getImg().getWidth() / 5.9f);
 
 			float term = hr * aux.slot[0].getImg().getWidth() * 0.2f;
@@ -512,7 +519,7 @@ public interface BattleBox {
                                 orbX += ballW;
                             }
 							if (sb.time - sb.frameOffCd[i][j] < 10) {
-								float diff = sb.time - sb.frameOffCd[i][j]; // first frame: 100%
+								float diff = sb.time - sb.frameOffCd[i][j]; // 最初のフレームは100%
 
 								g.setComposite(FakeGraphics.BLEND, (int) Math.max(0, 256 * (1f - 0.1f * diff)), 1);
 								FakeImage glowBox = aux.battle[1][22].getImg();
@@ -560,7 +567,7 @@ public interface BattleBox {
 				int x = (w - iw * 5) / 2 + iw * i + (int) (term * (i - 2) + (index == 0 ? 0 : (term / 2)));
 				int y = h - ih - (isBehind ? 0 : (int) (ih * 0.1));
 
-				//Check if lineup is changing
+				// 編成切替中か確認
 				if(sb.changeFrame != -1) {
 					if(sb.changeFrame >= sb.changeDivision) {
 						float dis = isBehind ? ih * 0.5f : sb.goingUp ? ih * 0.4f : ih * 0.6f;
@@ -659,7 +666,7 @@ public interface BattleBox {
 								orbX += ballW;
 							}
 							if (sb.time - sb.frameOffCd[index][i] < 10) {
-								float diff = sb.time - sb.frameOffCd[index][i]; // first frame: 100%
+								float diff = sb.time - sb.frameOffCd[index][i]; // 最初のフレームは100%
 
 								g.setComposite(FakeGraphics.BLEND, (int) Math.max(0, 256 * (1f - 0.1f * diff)), 1);
 								FakeImage glowBox = aux.battle[1][22].getImg();
@@ -688,7 +695,7 @@ public interface BattleBox {
 			float rw = range.getWidth() * 0.75f * bf.sb.siz;
 			float rh = range.getHeight()  * 0.85f * bf.sb.siz;
 
-			//102 is guessed value, making range indicator on ground
+			// 102は射程表示を地面に合わせるための推定値
 			g.drawImage(range, rang, midh - rh - 102 * bf.sb.siz, rw, rh);
 
 			int rtime = (int) (sb.time / 1.5) % 4;
@@ -1202,6 +1209,9 @@ public interface BattleBox {
 
 	}
 
+	/**
+	 * 専用フォントからステージ名の縁取り画像を生成する。
+	 */
 	class StageNamePainter {
 		private final FakeImage img;
 		private static Font font;
@@ -1488,6 +1498,9 @@ public interface BattleBox {
 		}
 	}
 
+	/**
+	 * 戦闘表示が参照する画面側の速度設定と遷移コールバックを提供する。
+	 */
 	interface OuterBox extends RetFunc {
 
 		int getSpeed();

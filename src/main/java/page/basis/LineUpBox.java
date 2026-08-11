@@ -24,6 +24,11 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ * 2 段の実編成と一時候補枠を描画し、選択、フォーム切替、ドラッグ並べ替えを扱う Canvas。
+ * 実編成への操作は保持する {@link BasisLU} の {@link LineUp} を直接変更し、再計算後に所有画面へ通知する。
+ * 一時候補枠はこの部品だけが所有し、編成切替時に破棄する。
+ */
 public class LineUpBox extends Canvas {
 
 	private static final long serialVersionUID = 1L;

@@ -15,6 +15,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
+/**
+ * 編成へ追加するユニットを絞り込み、選択結果を共有の {@link LineUpBox} へ渡す画面。
+ * 再表示時に {@link BasisSet#current()} の編成を取り直し、検索結果は親画面から参照される一覧として保持する。
+ */
 public class UnitFLUPage extends LubCont {
 
 	private static final long serialVersionUID = 1L;

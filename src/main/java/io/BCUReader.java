@@ -43,6 +43,11 @@ import java.util.List;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
+/**
+ * PC版設定と外部言語ファイルを共通データモデルへ読み込む。
+ * {@link #readInfo()} は描画・音声・UI初期化より前、{@link #getData$1()} は
+ * プロファイル読込後に呼ばれる前提で、後者では表示文言と音声キャッシュも準備する。
+ */
 public class BCUReader extends DataIO {
 
 	public static void getData$1() {

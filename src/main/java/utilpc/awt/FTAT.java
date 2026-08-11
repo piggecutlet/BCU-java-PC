@@ -4,6 +4,9 @@ import common.system.fake.FakeTransform;
 
 import java.awt.geom.AffineTransform;
 
+/**
+ * AWTの{@link AffineTransform}を{@link FakeTransform}として受け渡すためのラッパー。
+ */
 public class FTAT implements FakeTransform {
 
 	protected final AffineTransform t;

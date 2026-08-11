@@ -8,6 +8,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
+/**
+ * 指定した論理列だけフォーム名と編集用画像で表示する表セルレンダラー。
+ */
 public class UnitTCR extends DefaultTableCellRenderer {
 
 	private static final long serialVersionUID = 1L;

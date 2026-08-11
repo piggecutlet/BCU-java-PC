@@ -31,6 +31,10 @@ import java.awt.event.FocusEvent;
 import java.util.*;
 import java.util.List;
 
+/**
+ * ユーザーパックのユニット、フォーム、レベル曲線、オーブ条件を編集する画面。
+ * フォーム並べ替え後は配列順とフォームIDを揃え、ユニット削除時はコンボと編成から参照を除去する。
+ */
 public class UnitManagePage extends Page {
 
 	private static final long serialVersionUID = 1L;

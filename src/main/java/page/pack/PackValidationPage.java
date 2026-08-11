@@ -20,6 +20,10 @@ import java.awt.*;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * パック検証で見つかった不正なアニメーション所有者と不足ファイルを対応付けて表示する画面。
+ * 左側の所有者選択から元の検証結果を引き、右側のアニメーション名とファイル一覧を同期する。
+ */
 public class PackValidationPage extends Page {
     private static final long serialVersionUID = 1L;
 

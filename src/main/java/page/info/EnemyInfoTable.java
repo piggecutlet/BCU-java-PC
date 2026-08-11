@@ -27,6 +27,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * 1体の敵について個別の体力・攻撃倍率と現在の宝補正を反映し、攻撃・能力情報を表示するページ。
+ * 倍率入力の確定時は通常攻撃、追加攻撃、召喚先倍率を同じ倍率組で再計算する。
+ */
 public class EnemyInfoTable extends Page {
 
 	private static final long serialVersionUID = 1L;

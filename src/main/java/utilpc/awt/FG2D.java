@@ -11,6 +11,11 @@ import java.awt.geom.Path2D;
 
 import static java.awt.AlphaComposite.SRC_OVER;
 
+/**
+ * 共通描画APIをJava2DのGraphics2Dへ変換するAWTバックエンド。
+ * 生成時のCompositeを保持し、共通APIのDEF指定で元の合成状態へ戻す。
+ * この型はGraphics2Dを解放せず、コンストラクターへ直接渡した側だけが元の参照を使って解放できる。
+ */
 public class FG2D implements FakeGraphics {
 
 	private static final Object KAS = RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED;

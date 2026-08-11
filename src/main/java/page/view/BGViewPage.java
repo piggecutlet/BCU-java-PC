@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * 背景をパック単位または全パックから選択し、合成済みプレビューと使用ステージを表示する。
+ * プレビューは画面サイズに依存するため、タイマー更新時にも現在寸法で再生成する。
+ */
 public class BGViewPage extends Page implements SupPage<Background> {
 
 	private static final long serialVersionUID = 1L;

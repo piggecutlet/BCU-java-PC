@@ -17,6 +17,10 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * 撃破時アニメーションを選択・再生し、権限確認後に編集用素材として複製する。
+ * 通常アニメーションとは保存先の基準パスが異なり、複製先にはSOUL領域を使用する。
+ */
 public class SoulViewPage extends AbViewPage {
 
 	private static final long serialVersionUID = 1L;

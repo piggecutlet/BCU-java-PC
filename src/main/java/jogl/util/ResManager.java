@@ -21,6 +21,12 @@ import java.util.Map;
 
 import static com.jogamp.opengl.GL2.*;
 
+/**
+ * GL2コンテキスト単位でシェーダープログラムと画像テクスチャIDを所有する。
+ * GLImageのルートごとにテクスチャを遅延生成し、Canvasのdispose通知時に
+ * {@link #dispose()}で全テクスチャとプログラムを同じコンテキストから破棄する。
+ * dispose後のインスタンスは再利用不可で、現実装は静的MAPからも除去しない。
+ */
 public class ResManager {
 
 	public static final Map<GL2, ResManager> MAP = new HashMap<>();

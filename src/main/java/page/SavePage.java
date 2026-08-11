@@ -4,6 +4,10 @@ import common.CommonStatic;
 
 import javax.swing.*;
 
+/**
+ * 保存をバックグラウンドスレッドで実行し、完了後に画面群とアプリケーションを終了する終端画面。
+ * 生成時に終了処理中フラグを立て、例外時もプロセスを終了するため通常画面へは戻らない。
+ */
 public class SavePage extends Page {
     private static final long serialVersionUID = 1L;
 

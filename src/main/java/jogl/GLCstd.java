@@ -8,6 +8,11 @@ import jogl.util.ResManager;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ * BCUのOpenGL Canvasに共通する初期設定と資源解放を定義する基底型。
+ * GLコンテキスト破棄時に対応する{@link ResManager}を解放する。
+ * 通常の画面取得はGL読戻しではなく、AWT {@link Robot}によるCanvas領域のスクリーンキャプチャ。
+ */
 public abstract class GLCstd extends GLCanvas implements GLEventListener {
 
 	private static final long serialVersionUID = 1L;

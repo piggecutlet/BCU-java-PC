@@ -19,6 +19,10 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.Queue;
 
+/**
+ * 組み込みリソースの仮想ファイルツリーを閲覧し、画像・テキストの表示と抽出を行う画面。
+ * 選択ノードに応じてプレビュー種別と抽出可否を同期し、ディレクトリは再帰的に書き出す。
+ */
 public class ResourcePage extends Page {
 
 	private static final long serialVersionUID = 1L;
@@ -133,7 +137,7 @@ public class ResourcePage extends Page {
 	private void renderText(ActionEvent e) {
 		if (sel == null)
 			return;
-		if (tabl.isSelected() && sel.getName().endsWith(".csv")) { // todo: make table reading better
+		if (tabl.isSelected() && sel.getName().endsWith(".csv")) { // TODO CSV表の読み込みを改善する
 			StringBuilder txt = new StringBuilder("<html><table border=\"1\"><tr>");
 			Queue<String> queue = sel.getData().readLine();
 

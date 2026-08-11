@@ -13,6 +13,10 @@ import page.info.StageViewPage;
 
 import javax.swing.*;
 
+/**
+ * リプレイの選択、再生、録画・画像出力、ステージと編成の差し替えを共通化する画面。
+ * 録画設定はビットフラグとして戦闘画面へ渡す。
+ */
 public abstract class AbRecdPage extends Page {
 
 	private static final long serialVersionUID = 1L;

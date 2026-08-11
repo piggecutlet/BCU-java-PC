@@ -15,6 +15,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 起動中に更新情報を確認し、PCライブラリ、アセット、音楽、言語、フォントの取得と
+ * アセット統合を進め、選択された場合は最後に本体jarを取得する。
+ * 必須資源の取得失敗では終了経路へ入り、任意資源では再試行または継続を選ばせる。
+ */
 public class BCJSON {
 
 	public static final String[] PC_LANG_CODES = { "en", "jp", "kr", "zh", "fr", "it", "es", "de", "ru" };

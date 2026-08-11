@@ -10,6 +10,10 @@ import java.util.Collections;
 import java.util.Vector;
 import java.util.stream.Collectors;
 
+/**
+ * 標準エフェクト、攻撃エフェクト、魂アニメーションを一つの一覧で確認する表示画面。
+ * 選択したアニメーション種別を共通ビューアへ渡し、再生・書出し機能を提供する。
+ */
 public class EffectViewPage extends AbViewPage {
 
 	private static final long serialVersionUID = 1L;

@@ -14,6 +14,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * 出力種別ごとの前回ディレクトリを引き継ぎ、画像・バイト列・ストリームを保存するダイアログ。
+ * 入力ストリームの出力では既存名を上書きせず、連番付きの未使用ファイル名を選ぶ。
+ */
 public class Exporter extends JFileChooser {
 
 	private static final long serialVersionUID = 1L;

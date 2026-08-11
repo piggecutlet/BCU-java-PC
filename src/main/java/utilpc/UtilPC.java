@@ -23,8 +23,17 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+/**
+ * 共通層とPC環境を接続し、Swing向け画像・寸法・表示文を生成する補助入口。
+ * 画像処理はBufferedImageを前提とするため、OpenGL画像を直接扱う境界では
+ * CPU表現へ解決済みである必要がある。
+ */
 public class UtilPC {
 
+	/**
+	 * 共通層の保存・音声要求をPC版のWriter、Java Sound、Ogg解析へ接続する。
+	 * 終了指定付き保存ではログを閉じた後にプロセスを終了する。
+	 */
 	public static class PCItr implements Itf {
 
 		@Override
